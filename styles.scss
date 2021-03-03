@@ -1,0 +1,129 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    width: 100vw;
+    overflow: hidden;
+}
+
+// FIRST SECTION -------------------------------------
+.first-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 0 7vw;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    font-family: verdana;
+    color: white;
+}
+canvas{
+    margin: 0;
+    z-index: -1;
+    background: radial-gradient(circle, rgba(68,68,68,1) 0%, rgba(17,17,17,1) 64%, rgba(0,0,0,1) 100%);
+    background-repeat: no-repeat;
+    position: absolute;
+}
+.navigation-bar{
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5vh;
+}
+.burger-menu{
+    width: 12vw;
+    height: 12vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.line{
+    width: 100%;
+    height: 6px;
+    background-color: white;
+}
+.overlay{
+
+    background-color: #25282D;
+    // display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10vw;
+    display: none;
+}
+.close-arrow-container{
+    display: none;
+}
+.language-options{
+    width: 20vw;
+    height: 8vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.english{
+    width: 8vw;
+}
+.spanish{
+    width: 6vw;
+}
+.rings-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70vw;
+    height: 70vw;
+    z-index: 3;
+}
+.ring{
+    position: absolute;
+}
+.outer-ring{
+    width: 68%;
+    transform: rotate(-360deg) infinite;
+    transition-duration: 150s;
+}
+.middle-ring{
+    width: 60%;
+}
+.inner-ring{
+    width: 48%;
+}
+.profile-photo{
+    width: 35%;
+    position: absolute;
+    clip-path: circle(50%);
+}
+.name-title-container{
+    font-size: 1.5em;
+    text-align: center;
+    padding: 2vh;
+}
+.contact-button{
+    padding: 1vh 4vw;
+    border-radius: 10px;
+    background-color: white ;
+    color: #8C0303;
+    box-shadow:  1px 1px 5px 1px  #888888;
+}
+
+.arrow-scroll-container{
+    width: 15vw;
+    height: 15vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.arrow-scroll{
+    width: 100%;
+}
+
+
+
