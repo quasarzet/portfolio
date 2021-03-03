@@ -1,7 +1,8 @@
 // CANVAS ANIMATIONS
 const canvas = document.querySelector('canvas');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+const firstSection = document.querySelector('.first-section');
+canvas.width = firstSection.clientWidth;
+canvas.height = firstSection.clientHeight;
 const context = canvas.getContext('2d');
 
 let mouse = {
@@ -28,8 +29,10 @@ window.addEventListener('mousemove', function(event){
 
 // DETECTS A RESIZE AND ADJUSTS THE CANVAS SIZE
 window.addEventListener('resize', function(){
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    // canvas.width = window.innerWidth;
+    // canvas.height = window.innerHeight;
+    canvas.width = firstSection.clientWidth;
+    canvas.height = firstSection.clientHeight;
     init();
 })
 

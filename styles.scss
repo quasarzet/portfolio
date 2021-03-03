@@ -4,10 +4,10 @@ html, body{
     box-sizing: border-box;
     scroll-behavior: smooth;
     width: 100vw;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
-// FIRST SECTION -------------------------------------
+// FIRST SECTION - LANDING -------------------------------------------------------------------
 .first-section{
     display: flex;
     flex-direction: column;
@@ -32,12 +32,14 @@ canvas{
     width: 100%;
     height: 10vh;
     display: flex;
+    flex-direction: row;
+    align-items: center;
     justify-content: space-between;
     margin-top: 5vh;
 }
 .burger-menu{
-    width: 12vw;
-    height: 12vw;
+    width: 10vw;
+    height: 10vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -45,11 +47,10 @@ canvas{
 }
 .line{
     width: 100%;
-    height: 6px;
+    height: 5px;
     background-color: white;
 }
 .overlay{
-
     background-color: #25282D;
     // display: flex;
     flex-direction: column;
@@ -78,31 +79,42 @@ canvas{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 70vw;
-    height: 70vw;
-    z-index: 3;
+    width: 60vw;
+    height: 60vw;
+    z-index: 5;
 }
 .ring{
     position: absolute;
+    animation: rotation;
+    animation-iteration-count: infinite;
 }
 .outer-ring{
-    width: 68%;
-    transform: rotate(-360deg) infinite;
-    transition-duration: 150s;
+    width: 60%;
+    animation-duration: 210s;
 }
 .middle-ring{
-    width: 60%;
+    width: 52%;
+    animation-duration: 120s;
 }
 .inner-ring{
-    width: 48%;
+    width: 42%;
+    animation-duration: 90s;
+}
+@keyframes rotation{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(-360deg);
+    }
 }
 .profile-photo{
-    width: 35%;
+    width: 30%;
     position: absolute;
     clip-path: circle(50%);
 }
 .name-title-container{
-    font-size: 1.5em;
+    font-size: 1.7em;
     text-align: center;
     padding: 2vh;
 }
@@ -113,7 +125,6 @@ canvas{
     color: #8C0303;
     box-shadow:  1px 1px 5px 1px  #888888;
 }
-
 .arrow-scroll-container{
     width: 15vw;
     height: 15vw;
@@ -125,5 +136,97 @@ canvas{
     width: 100%;
 }
 
+// SECOND SECTION - PROJECTS ----------------------------------------------------------------------------
+.section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 7vw;
+    background-color: #25282D;
+    color: white;
+}
+.section-title{
+    font-size: 3em;
+    text-align: center;
+}
+.project{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid aqua;
+    border-radius: 10px;
+    margin-bottom: 4vh;
+}
+.project-image{
+    width: 100%;
+    height: 25vh;
+    border-radius: 10px;
+}
+.project-text{
+    border: 2px solid aqua;
+    border-style: solid none none none;
+    padding: 4vw;
+}
+.project-text p{
+    text-align: justify;
+}
 
+// THIRD SECTION - ABOUT ----------------------------------------------------------------------------
+.about-text{
+    text-align: justify;
+}
+.technologies{
+    width: 80vw;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.technology-logo{
+    width: 10vw;
+    height: 10vw;
+    padding: 2vw;
+}
 
+// FOURTH SECTION - CONTACT ----------------------------------------------------------------------------
+.contact-text span:first-child{
+    font-size: 2em;
+}
+.contact-form{
+    margin-top: 4vh;
+    height: 45vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+input, textarea{
+    width: 60vw;
+    border-radius: 5px;
+}
+input{
+    text-align: center;
+}
+input[name='name']::placeholder, input[name='mail']::placeholder{
+    text-align: center;
+}
+.submit-button{
+    background-color: lightgray;
+    color: #8C0303;
+    border-radius: 15px;
+    padding: 0.5vh 6vw;
+}
+.social-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 25vw;
+    margin-top: 3vh;
+}
+.social-logo{
+    width: 8vw;
+
+}
