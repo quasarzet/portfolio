@@ -10,15 +10,15 @@ let mouse = {
     y: undefined
 }
 // MAXIMUM RADIUS FOR EACH DOT
-const maxRadius = 10;
+const maxRadius = 8;
 
 // AN ARRAY OF COLORS WHERE TO CHOOSE FROM RANDOMLY
 const colorArray = [
     '#2E333D',
     '#25282D',
-    '#B7CFDC',
+    '#c8c8c8',
     '#D9E4EC',
-    '#8c0303',
+    '#670000',
 ];
 
 // DETECTS THE MOUSE POSITION
@@ -86,8 +86,8 @@ function init(){
     // THE CIRCLE ARRAY IS EMPTIED EVERY TIME THE INIT FUNCTION RUN
     circleArray = [];
 
-    // CREATES 100 CIRCLES WITH RANDOM VALUES FOR POSITION, DIAMETER AND DIRECTION
-    for(let i=0; i<100; i++){
+    // CREATES 60 CIRCLES WITH RANDOM VALUES FOR POSITION, DIAMETER AND DIRECTION
+    for(let i=0; i<60; i++){
         let radius = Math.random() * 3 + 2;
         let x = Math.random() * innerWidth;
         let y = Math.random() * innerHeight;
@@ -116,80 +116,245 @@ animate();
 
 // BURGER MENU ANIMATIONS
 gsap.registerPlugin();
-function toggleBurgerMenu(){
-    const bodyElement = document.querySelector('body');
+function openBurgerMenu(){
     const overlay = document.querySelector('.overlay');
     const item1 = document.querySelector('.item-1');
     const item2 = document.querySelector('.item-2');
     const item3 = document.querySelector('.item-3');
     const item4 = document.querySelector('.item-4');
-    const overlayOuterRing = document.querySelector('.overlay-outer-ring');
-    const outerRing = document.querySelector('.outer-ring');
-    const overlayCircle = document.querySelector('.overlay-circle');
+    const allNavigationItems = document.querySelectorAll('.navigation-item');
     const line1 = document.querySelector('.line-1');
     const line2 = document.querySelector('.line-2');
     const line3 = document.querySelector('.line-3');
     const cross = document.querySelector('.cross')
-    
-    if(burgerMenuOpen == false){
+
         // TIMELINE FOR THE OPENING ANIMATION
+        cross.hidden = false;
         burOpeTim = gsap.timeline();
         burOpeTim
         .to(line1, {x: -100, opacity: 0, duration: 0.5})
         .to(line2, {opacity: 0, duration: 0.5}, "-=0.5")
         .to(line3, {x: 100, opacity: 0, duration: 0.5}, '-=0.5')
-        .to([overlayCircle, overlayOuterRing], {display: 'inline-block', visibility:'visible'}, '-=0.5')
-        .to(outerRing,{ duration: 0.1, opacity: 0})
-        .to(overlayOuterRing,{scale: 0.2, duration: 0.2}, '-=0.2')
-        .from(overlayCircle,{opacity: 0})
-        .to(overlayOuterRing,{scale: 5, duration: 0.5}, '-=0.4')
-        .to(overlayCircle, {duration: 0.5, visibility:'visible'}, '-=0.5')
-        .to(overlayCircle, {scale: 15, duration: 0.5}, '-=0.5')
-        .to(overlayCircle, {opacity: 0, duration: 0.1})
-        .to(overlay, {duration: 0.1, display: 'flex'}, '-=0.1')
-        .from(cross, {opacity: 0, scale: 0.2})
-        .to([overlayCircle, overlayOuterRing], {scale: 1, display: 'none'})
-        .to([item1, item2, item3, item4], {display:'inline-block'}, '-=2.5')
-        .from(item1,{duration: 0.2, scale:10, opacity: 0}, '-=0.1')
+        .to(overlay, {duration: 0.5, top: 30, ease: 'back'})
+        .to(burgerMenu,{display: 'none'})
+        .from(item1,{duration: 0.2, scale:10, opacity: 0}, '-=0.5')
         .from(item2,{duration: 0.2, scale:10, opacity: 0})
         .from(item3,{duration: 0.2, scale:10, opacity: 0})
         .from(item4,{duration: 0.2, scale:10, opacity: 0})
-        .to([outerRing, overlayCircle], { duration: 0.5, opacity: 1});
-        bodyElement.classList.add('body-hide');
-        burgerMenuOpen = !burgerMenuOpen;
-    }
-    else{
-        // TIMELINE FOR THE CLOSING ANIMATION
-        burCloTim = gsap.timeline();
-        burCloTim
-        .to([item1, item2, item3, item4], {display: 'none', duration: 0.5})
-        .to(cross, {opacity: 0}, '-=0.5')
-        .to(overlay, { duration: 0.5, display: 'none'}, '-=0.5')
-        .to([overlayCircle, overlayOuterRing], {display:'inline-block', visibility:'hidden'})
-        .to(line1, {x: 0, opacity: 1, duration: 0.5})
-        .to(line2, {opacity: 1, duration: 0.5}, "-=0.5")
-        .to(line3, {x: 0, opacity: 1, duration: 0.5}, '-=0.5')
-        .to(cross,{opacity: 1})
-        bodyElement.classList.remove('body-hide');
-        burgerMenuOpen = !burgerMenuOpen;
-    }
+        .from(cross,{opacity: 0, duration: 1}, '-=0.7');
+        
+        // CLOSES THE OVERLAY WHEN THE CROSS IS CLICKED
+        function closeBurgerMenu(){
+            cross.hidden = true;
+            gsap.to(burgerMenu,{display: 'flex'});
+            gsap.to(overlay, {top: '-50vh', duration: 0.5, ease: 'slow'});
+            gsap.to(line1, {x: 0, opacity: 1, duration: 0.5});
+            gsap.to(line2, {opacity: 1, duration: 0.5});
+            gsap.to(line3, {x: 0, opacity: 1, duration: 0.5});
+        }
+        // EVENT LISTENER TO CLOSE THE BURGER MENU
+        cross.addEventListener('click', closeBurgerMenu);
+        allNavigationItems.forEach(item=>{
+            item.addEventListener('click', closeBurgerMenu);
+        })
 }
-let burgerMenuOpen = false;
+
+// BURGER MENU INITIALIZATION
 const burgerMenu = document.querySelector('.burger-menu');
-burgerMenu.addEventListener('click', toggleBurgerMenu)
+burgerMenu.addEventListener('click', openBurgerMenu)
 
 
 //ARROW ANIMATION
-const arrowScroll = document.querySelector('.arrow-scroll');
 // STARTS THE ARROW ANIMATION
 function arrowAnimation(){
     arrowScroll.classList.add("arrow-visible");
-    gsap.to(arrowScroll, {y: 5, duration: 1.5, opacity: 1, repeat: -1});
+    gsap.to(arrowScroll, {duration: 2, opacity: 0.1, repeat: -1});
 }
-arrowAnimation();
+
 // STOPS THE ARROW ANIMATION WHEN SCROLL IS DETECTED
 function stopArrow(){
     arrowScroll.classList.remove("arrow-visible");
     arrowScroll.classList.add("arrow-invisible");
 }
+//ARROW ANIMATION INITIALIZATION
+const arrowScroll = document.querySelector('.arrow-scroll');
+arrowAnimation();
 document.addEventListener('scroll', stopArrow);
+
+
+// COPY EMAIL TO CLIPBOARD
+const email = document.querySelector('.email');
+const toast = document.querySelector('.toast-container');
+email.addEventListener('click', ()=>{
+    email.select();
+    document.execCommand("copy");
+    toast.classList.add('toast-visible');
+    gsap.from(toast, {opacity: 0, duration: 0.5});
+    gsap.to(toast, {opacity: 1});
+    gsap.to(toast,{opacity: 0, delay: 2, duration: 0.7});
+    setTimeout(()=>{
+        toast.classList.remove('toast-visible');
+    }, 2700)
+})
+
+
+
+
+
+// function translate(language){
+//     // $('#home').text(language.home);
+//     // $('#projects').text(language.projects);
+//     // $('#about').text(language.about);
+//     // $('#contact').text(language.contact);
+//     // $('.title').text(language.title);
+//     // document.querySelector('#title').textContent = language.title;
+//     // $('.contact-button').text(language.contact);
+//     // $('.project-title').text(language.projectTitle);
+//     // $('.first-project-description').text(language.firstProjectDescription);
+//     // $('.first-project-technologies').text(language.firstProjectTechnologies);
+//     // $('.second-project-description').text(language.secondProjectDescription);
+//     // $('.second-project-technologies').text(language.secondProjectTechnologies);
+//     // $('.third-project-description').text(language.thirdProjectDescription);
+//     // $('.third-project-technologies').text(language.thirdProjectTechnologies);
+//     // $('.about-title').text(language.aboutTitle);
+//     // $('.about-first').text(language.aboutFirst);
+//     // $('.about-second').text(language.aboutSecond);
+//     // $('.about-third').text(language.aboutThird);
+//     // $('.about-fourth').text(language.aboutFourth);
+//     // $('.technologies-used').text(language.technologiesUsed);
+//     // $('.contact-title').text(language.contactTitle);
+//     // $('.contact-first').text(language.contactFirst);
+//     // $('.contact-second').text(language.contactSecond);
+//     // $('.toast-message').text(language.toastMessage);
+//     // $('.submit-button').text(language.submitButton);
+//     console.log('translated')
+// };
+
+// function setLanguage(lang) {
+//     localStorage.setItem('language', lang);
+// }
+
+// let language; 
+// function getLanguage() {
+// if(localStorage.getItem('language') === null){
+//     setLanguage('en')
+// }
+// $.ajax({ 
+// url: '/language/' +  localStorage.getItem('language') + '.json', 
+// dataType: 'json', async: true, 
+// success: function (data) {
+//     language = data;
+//     console.log(language.about);
+//     translate(language);
+// }
+// });
+// }
+
+// $(document).ready(getLanguage);
+
+// $(".spanish").click(()=>{
+//     // setLanguage('es');
+//     localStorage.setItem('language', 'es');
+//     // translate();
+//     document.querySelector('#title').textContent = language.title;
+
+
+// })
+
+// $(".english").click(()=>{
+//     // setLanguage('en');
+//     localStorage.setItem('language', 'en');
+//     translate(language);
+//     // location.reload();
+//     console.log("english");
+// })
+
+
+
+function animationTranslate(element){
+    gsap.from(element,{duration: 0.5, opacity: 0, scale: 2});
+};
+
+
+
+
+function translate(language){
+    let translationArray=[
+        $('.contact-button').text(language.contact),
+        $('.title').text(language.title),
+        $('.item-1').text(language.home),
+        $('.item-2').text(language.projects),
+        $('.item-3').text(language.about),
+        $('.item-4').text(language.contact),
+        $('.project-title').text(language.projectTitle),
+        $('.first-project-description').text(language.firstProjectDescription),
+        $('.first-project-technologies').text(language.firstProjectTechnologies),
+        $('.second-project-description').text(language.secondProjectDescription),
+        $('.second-project-technologies').text(language.secondProjectTechnologies),
+        $('.third-project-description').text(language.thirdProjectDescription),
+        $('.third-project-technologies').text(language.thirdProjectTechnologies),
+        $('.about-title').text(language.aboutTitle),
+        $('.about-first').text(language.aboutFirst),
+        $('.about-second').text(language.aboutSecond),
+        $('.about-third').text(language.aboutThird),
+        $('.about-fourth').text(language.aboutFourth),
+        $('.technologies-used').text(language.technologiesUsed),
+        $('.contact-title').text(language.contactTitle),
+        $('.contact-first').text(language.contactFirst),
+        $('.contact-second').text(language.contactSecond),
+        $('.toast-message').text(language.toastMessage),
+        $('.submit-button').text(language.submitButton),
+        $('.name-placeholder').attr('placeholder', language.namePlaceholder),
+        $('.email-placeholder').attr('placeholder', language.emailPlaceholder),
+        $('.message-placeholder').attr('placeholder', language.messagePlaceholder)
+    ];
+    let animatedArray = translationArray.slice(1, translationArray.length);
+    animatedArray.forEach(element=>{
+    animationTranslate(element);
+    })
+};
+
+// REQUEST SPANISH LANGUAGE
+let spanishLanguage;
+function getlanguageSpanish(){
+    $.ajax({ 
+        url: `/language/es.json`, 
+        dataType: 'json', async: true, 
+        success: (data)=> {
+            spanishLanguage = data;
+            translate(spanishLanguage);
+        }
+    });
+    localStorage.setItem('language', 'es');
+};
+
+// REQUEST ENGLISH LANGUAGE
+let EnglishLanguage;
+function getlanguageEnglish(){
+    $.ajax({ 
+        url: `/language/en.json`, 
+        dataType: 'json', async: true, 
+        success: (data)=> {
+            englishLanguage = data;
+            translate(englishLanguage);
+        }
+    });
+    localStorage.setItem('language', 'en');
+};
+
+// CHECKS THAT THE WEBSITE HAS LOADED, AND LOADS THE LATEST LANGUAGE REGISTERED
+$(document).ready(()=>{
+    if(localStorage.getItem('language') === 'es'){
+        getlanguageSpanish();
+    }else{
+        (localStorage.getItem('language') === null)
+        getlanguageEnglish();
+    }
+});
+
+// EVENTS LISTENERS FOR THE LANGUAGE BUTTONS
+$('.spanish').click(getlanguageSpanish);
+$('.english').click(getlanguageEnglish);
+
+
+

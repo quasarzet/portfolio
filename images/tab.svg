@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38.5 14.89">
+  <defs>
+    <style>
+      .a {
+        fill: rgb(37, 40, 45);
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <path class="a" d="M37,11.56l-14-10a5.34,5.34,0,0,0-7.5,0l-14,10A5.16,5.16,0,0,0,0,14.89H38.5A5.16,5.16,0,0,0,37,11.56Z"/>
+</svg>
