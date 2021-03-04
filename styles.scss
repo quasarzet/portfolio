@@ -1,10 +1,18 @@
-html, body{
-    margin: 0;
-    padding: 0;
+html{
     box-sizing: border-box;
     scroll-behavior: smooth;
+    
+}
+body{
+    margin: 0;
+    padding: 0;
+    // overflow-x: hidden;
     width: 100vw;
-    overflow-x: hidden;
+}
+.body-hide{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
 }
 
 // FIRST SECTION - LANDING -------------------------------------------------------------------
@@ -16,7 +24,7 @@ html, body{
     box-sizing: border-box;
     padding: 0 7vw;
     width: 100vw;
-    height: 100vh;
+    height: 85vh;
     overflow: hidden;
     font-family: verdana;
     color: white;
@@ -35,7 +43,7 @@ canvas{
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin-top: 5vh;
+    margin-top: 3vh;
 }
 .burger-menu{
     width: 10vw;
@@ -44,6 +52,7 @@ canvas{
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    z-index: 9;
 }
 .line{
     width: 100%;
@@ -53,14 +62,36 @@ canvas{
 .overlay{
     background-color: #25282D;
     // display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    padding: 10vw;
     display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 8;
+    overflow: hidden;
+}
+.navigation-items ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 50vh;
+}
+.navigation-items li{
+    display: none;
+    list-style: none;
+    font-size: 2.5em;
+    text-align: center;
 }
 .close-arrow-container{
-    display: none;
+    position: absolute;
+    top: 5vh;
+    left: 8vw;
+    width: 10vw;
+    height: 10vw;
+    z-index: 9;
 }
 .language-options{
     width: 20vw;
@@ -74,6 +105,16 @@ canvas{
 }
 .spanish{
     width: 6vw;
+}
+.overlay-outer-ring{
+    visibility: hidden;
+    z-index: 6;
+}
+.overlay-circle{
+    width: 15vw;
+    position: absolute;
+    z-index: 6;
+    visibility: hidden;
 }
 .rings-container{
     display: flex;
@@ -135,6 +176,19 @@ canvas{
 .arrow-scroll{
     width: 100%;
 }
+.arrow-visible{
+    // width: 8vw;
+    // position: absolute;
+    // top: 68vh;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+    visibility: visible;
+}
+.arrow-invisible{
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
 
 // SECOND SECTION - PROJECTS ----------------------------------------------------------------------------
 .section{
@@ -154,17 +208,18 @@ canvas{
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 2px solid aqua;
+    background-color: rgb(16, 20, 31);
     border-radius: 10px;
+    box-shadow: 2px 2px 15px black;
     margin-bottom: 4vh;
 }
 .project-image{
     width: 100%;
-    height: 25vh;
-    border-radius: 10px;
+    height:30vh;
+    border-radius: 10px 10px 0 0 ;
 }
 .project-text{
-    border: 2px solid aqua;
+    border: 2px solid rgb(41, 47, 66);
     border-style: solid none none none;
     padding: 4vw;
 }
@@ -183,6 +238,10 @@ canvas{
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    background-color: rgb(41, 47, 66);
+    padding: 3vw;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px black;
 }
 .technology-logo{
     width: 10vw;
@@ -223,7 +282,7 @@ input[name='name']::placeholder, input[name='mail']::placeholder{
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 25vw;
+    width: 35vw;
     margin-top: 3vh;
 }
 .social-logo{

@@ -1,0 +1,10 @@
+<svg class="svg-cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520.71 520.71">
+    <defs>
+      <style>
+        .ac {
+          fill: white;
+        }
+      </style>
+    </defs>
+    <polygon class="ac" points="520.71 70.71 450 0 260.36 189.65 70.71 0 0 70.71 189.65 260.36 0 450 70.71 520.71 260.36 331.07 450 520.71 520.71 450 331.07 260.36 520.71 70.71"/>
+</svg>

@@ -21,22 +21,6 @@
                 <div class="line line-2"></div>
                 <div class="line line-3"></div>
             </div>
-            <!-- OVERLAY -->
-            <div class="overlay">
-                <!-- ARROW TO CLOSE THE BURGER MENU -->
-                <div class="close-arrow-container">
-                    <img src="" alt="Close Arrow Icon">
-                </div>
-                <!-- NAVIGATION ELEMENTS -->
-                <div class="navigation-items">
-                    <ul>
-                        <li class="navigation-item">Home</li>
-                        <li class="navigation-item">About</li>
-                        <li class="navigation-item">Projects</li>
-                        <li class="navigation-item">Contact</li>
-                    </ul>
-                </div>
-            </div>
             <!-- LANGUAGES -->
             <div class="language-options">
                 <img class="english" src='images/english.svg' alt='Britain Flag'>
@@ -44,11 +28,30 @@
             </div>
         </div>
         
+        <!-- OVERLAY -->
+        <div class="overlay">
+            <!-- ARROW TO CLOSE THE BURGER MENU -->
+            <div class="close-arrow-container">
+                <img class="cross" src="images/cross.svg" alt="Close Arrow Icon">
+            </div>
+            <!-- NAVIGATION ELEMENTS -->
+            <div class="navigation-items">
+                <ul>
+                    <li class="navigation-item item-1">Home</li>
+                    <li class="navigation-item item-2">About</li>
+                    <li class="navigation-item item-3">Projects</li>
+                    <li class="navigation-item item-4">Contact</li>
+                </ul>
+            </div>
+        </div>
+        
         <!-- PROFILE PHOTO -->
         <div class="photo-container">
             <div class="rings-container">
-                <img class="ring outer-ring" src="images/outer-ring.svg" alt="Decorative Ring" >    
-                <img class="ring middle-ring" src="images/middle-ring.svg" alt="Decorative Ring" >    
+                <img class="overlay-outer-ring" src="images/outer-ring.svg" alt="Decorative Ring" >
+                <img class="overlay-circle" src="images/overlay-circle.svg" alt="Decorative Circle" >
+                <img class="ring outer-ring" src="images/outer-ring.svg" alt="Decorative Ring" >
+                <img class="ring middle-ring" src="images/middle-ring.svg" alt="Decorative Ring" >
                 <img class="ring inner-ring" src="images/inner-ring.svg" alt="Decorative Ring" > 
                 <img class="profile-photo" src="images/photo.jpg" alt="Profile Photo" >
             </div>
@@ -67,7 +70,7 @@
 
         <!-- ARROW SCROLL -->
         <div class="arrow-scroll-container">
-            <img class="arrow-scroll" src="images/arrow.svg" alt="Scroll Indicator">
+            <img class="arrow-scroll" visibility="hidden" src="images/arrow.svg" alt="Scroll Indicator">
         </div>
     </div>
 
@@ -125,7 +128,7 @@
             <img class="technology-logo" src="images/technologies/illustrator.svg" alt="Illustrator Logo">
             <img class="technology-logo" src="images/technologies/xd.svg" alt="Adobe XD Logo">
             <img class="technology-logo" src="images/technologies/sass.svg" alt="SASS Logo">
-            <img class="technology-logo" src="images/technologies/github.svg" alt="GitHub Logo">
+            <img class="technology-logo" src="images/technologies/github-black.svg" alt="GitHub Logo">
             <img class="technology-logo" src="images/technologies/vs-code.svg" alt="Visual Studio Code Logo">
         </div>
     </div>
@@ -137,6 +140,7 @@
         <div class="contact-text">
             <span>If you are interested in hiring me,</span></br>
             <span>or just chatting about web development, motorcycles, music, or life. Contact me:</span>
+            <p class='email'>julianmontoya15@gmail.com</p>
         </div>
             <form class="contact-form" action="https://formspree.io/f/mleoyapr" method="post">
                 <input type="text" name="name" placeholder="Name" required>
@@ -147,11 +151,13 @@
         <div class="social-container">
             <img class="social-logo" src="images/technologies/github.svg" alt="GitHub Logo">
             <img class="social-logo" src="images/technologies/linkedin.svg" alt="LinkedIn Logo">
+            <img class="social-logo" src="images/technologies/codepen.svg" alt="Codepen Logo">
         </div>
     </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
     <script src="scripts.js"></script>
 </body>
 </html>

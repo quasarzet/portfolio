@@ -98,7 +98,6 @@ function init(){
     }
 }
 
-
 function animate(){
     requestAnimationFrame(animate);
 
@@ -112,3 +111,85 @@ function animate(){
 
 init();
 animate();
+
+
+
+// BURGER MENU ANIMATIONS
+gsap.registerPlugin();
+function toggleBurgerMenu(){
+    const bodyElement = document.querySelector('body');
+    const overlay = document.querySelector('.overlay');
+    const item1 = document.querySelector('.item-1');
+    const item2 = document.querySelector('.item-2');
+    const item3 = document.querySelector('.item-3');
+    const item4 = document.querySelector('.item-4');
+    const overlayOuterRing = document.querySelector('.overlay-outer-ring');
+    const outerRing = document.querySelector('.outer-ring');
+    const overlayCircle = document.querySelector('.overlay-circle');
+    const line1 = document.querySelector('.line-1');
+    const line2 = document.querySelector('.line-2');
+    const line3 = document.querySelector('.line-3');
+    const cross = document.querySelector('.cross')
+    
+    if(burgerMenuOpen == false){
+        // TIMELINE FOR THE OPENING ANIMATION
+        burOpeTim = gsap.timeline();
+        burOpeTim
+        .to(line1, {x: -100, opacity: 0, duration: 0.5})
+        .to(line2, {opacity: 0, duration: 0.5}, "-=0.5")
+        .to(line3, {x: 100, opacity: 0, duration: 0.5}, '-=0.5')
+        .to([overlayCircle, overlayOuterRing], {display: 'inline-block', visibility:'visible'}, '-=0.5')
+        .to(outerRing,{ duration: 0.1, opacity: 0})
+        .to(overlayOuterRing,{scale: 0.2, duration: 0.2}, '-=0.2')
+        .from(overlayCircle,{opacity: 0})
+        .to(overlayOuterRing,{scale: 5, duration: 0.5}, '-=0.4')
+        .to(overlayCircle, {duration: 0.5, visibility:'visible'}, '-=0.5')
+        .to(overlayCircle, {scale: 15, duration: 0.5}, '-=0.5')
+        .to(overlayCircle, {opacity: 0, duration: 0.1})
+        .to(overlay, {duration: 0.1, display: 'flex'}, '-=0.1')
+        .from(cross, {opacity: 0, scale: 0.2})
+        .to([overlayCircle, overlayOuterRing], {scale: 1, display: 'none'})
+        .to([item1, item2, item3, item4], {display:'inline-block'}, '-=2.5')
+        .from(item1,{duration: 0.2, scale:10, opacity: 0}, '-=0.1')
+        .from(item2,{duration: 0.2, scale:10, opacity: 0})
+        .from(item3,{duration: 0.2, scale:10, opacity: 0})
+        .from(item4,{duration: 0.2, scale:10, opacity: 0})
+        .to([outerRing, overlayCircle], { duration: 0.5, opacity: 1});
+        bodyElement.classList.add('body-hide');
+        burgerMenuOpen = !burgerMenuOpen;
+    }
+    else{
+        // TIMELINE FOR THE CLOSING ANIMATION
+        burCloTim = gsap.timeline();
+        burCloTim
+        .to([item1, item2, item3, item4], {display: 'none', duration: 0.5})
+        .to(cross, {opacity: 0}, '-=0.5')
+        .to(overlay, { duration: 0.5, display: 'none'}, '-=0.5')
+        .to([overlayCircle, overlayOuterRing], {display:'inline-block', visibility:'hidden'})
+        .to(line1, {x: 0, opacity: 1, duration: 0.5})
+        .to(line2, {opacity: 1, duration: 0.5}, "-=0.5")
+        .to(line3, {x: 0, opacity: 1, duration: 0.5}, '-=0.5')
+        .to(cross,{opacity: 1})
+        bodyElement.classList.remove('body-hide');
+        burgerMenuOpen = !burgerMenuOpen;
+    }
+}
+let burgerMenuOpen = false;
+const burgerMenu = document.querySelector('.burger-menu');
+burgerMenu.addEventListener('click', toggleBurgerMenu)
+
+
+//ARROW ANIMATION
+const arrowScroll = document.querySelector('.arrow-scroll');
+// STARTS THE ARROW ANIMATION
+function arrowAnimation(){
+    arrowScroll.classList.add("arrow-visible");
+    gsap.to(arrowScroll, {y: 5, duration: 1.5, opacity: 1, repeat: -1});
+}
+arrowAnimation();
+// STOPS THE ARROW ANIMATION WHEN SCROLL IS DETECTED
+function stopArrow(){
+    arrowScroll.classList.remove("arrow-visible");
+    arrowScroll.classList.add("arrow-invisible");
+}
+document.addEventListener('scroll', stopArrow);
