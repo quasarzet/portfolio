@@ -242,28 +242,25 @@ let translationArray=[
 };
 
 // REQUEST SPANISH LANGUAGE
-let spanishLanguage;
 function getlanguageSpanish(){
     $.ajax({ 
-        url: `/language/es.json`, 
+        url: 'language/es.json', 
         dataType: 'json', async: true, 
         success: (data)=> {
-            spanishLanguage = data;
+            const spanishLanguage = data;
             translate(spanishLanguage);
         }
     });
-
     localStorage.setItem('language', 'es');
 };
 
 // REQUEST ENGLISH LANGUAGE
-let EnglishLanguage;
 function getlanguageEnglish(){
     $.ajax({ 
         url: `/language/en.json`, 
         dataType: 'json', async: true, 
         success: (data)=> {
-            englishLanguage = data;
+            const englishLanguage = data;
             translate(englishLanguage);
         }
     });
