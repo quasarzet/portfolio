@@ -198,119 +198,46 @@ email.addEventListener('click', ()=>{
 })
 
 
-
-
-
-// function translate(language){
-//     // $('#home').text(language.home);
-//     // $('#projects').text(language.projects);
-//     // $('#about').text(language.about);
-//     // $('#contact').text(language.contact);
-//     // $('.title').text(language.title);
-//     // document.querySelector('#title').textContent = language.title;
-//     // $('.contact-button').text(language.contact);
-//     // $('.project-title').text(language.projectTitle);
-//     // $('.first-project-description').text(language.firstProjectDescription);
-//     // $('.first-project-technologies').text(language.firstProjectTechnologies);
-//     // $('.second-project-description').text(language.secondProjectDescription);
-//     // $('.second-project-technologies').text(language.secondProjectTechnologies);
-//     // $('.third-project-description').text(language.thirdProjectDescription);
-//     // $('.third-project-technologies').text(language.thirdProjectTechnologies);
-//     // $('.about-title').text(language.aboutTitle);
-//     // $('.about-first').text(language.aboutFirst);
-//     // $('.about-second').text(language.aboutSecond);
-//     // $('.about-third').text(language.aboutThird);
-//     // $('.about-fourth').text(language.aboutFourth);
-//     // $('.technologies-used').text(language.technologiesUsed);
-//     // $('.contact-title').text(language.contactTitle);
-//     // $('.contact-first').text(language.contactFirst);
-//     // $('.contact-second').text(language.contactSecond);
-//     // $('.toast-message').text(language.toastMessage);
-//     // $('.submit-button').text(language.submitButton);
-//     console.log('translated')
-// };
-
-// function setLanguage(lang) {
-//     localStorage.setItem('language', lang);
-// }
-
-// let language; 
-// function getLanguage() {
-// if(localStorage.getItem('language') === null){
-//     setLanguage('en')
-// }
-// $.ajax({ 
-// url: '/language/' +  localStorage.getItem('language') + '.json', 
-// dataType: 'json', async: true, 
-// success: function (data) {
-//     language = data;
-//     console.log(language.about);
-//     translate(language);
-// }
-// });
-// }
-
-// $(document).ready(getLanguage);
-
-// $(".spanish").click(()=>{
-//     // setLanguage('es');
-//     localStorage.setItem('language', 'es');
-//     // translate();
-//     document.querySelector('#title').textContent = language.title;
-
-
-// })
-
-// $(".english").click(()=>{
-//     // setLanguage('en');
-//     localStorage.setItem('language', 'en');
-//     translate(language);
-//     // location.reload();
-//     console.log("english");
-// })
-
-
-
+// ANIMATIONS FOR EVERY TRANSLATED WORD
 function animationTranslate(element){
     gsap.from(element,{duration: 0.5, opacity: 0, scale: 2});
 };
 
-
-
-
+// CREATES AN ARRAY WITH ALL THE TEXT ELEMENTS AND ASSINGS THE MATCHING VALUE FROM
+// JSON LANGUAGE FILES
 function translate(language){
-    let translationArray=[
-        $('.contact-button').text(language.contact),
-        $('.title').text(language.title),
-        $('.item-1').text(language.home),
-        $('.item-2').text(language.projects),
-        $('.item-3').text(language.about),
-        $('.item-4').text(language.contact),
-        $('.project-title').text(language.projectTitle),
-        $('.first-project-description').text(language.firstProjectDescription),
-        $('.first-project-technologies').text(language.firstProjectTechnologies),
-        $('.second-project-description').text(language.secondProjectDescription),
-        $('.second-project-technologies').text(language.secondProjectTechnologies),
-        $('.third-project-description').text(language.thirdProjectDescription),
-        $('.third-project-technologies').text(language.thirdProjectTechnologies),
-        $('.about-title').text(language.aboutTitle),
-        $('.about-first').text(language.aboutFirst),
-        $('.about-second').text(language.aboutSecond),
-        $('.about-third').text(language.aboutThird),
-        $('.about-fourth').text(language.aboutFourth),
-        $('.technologies-used').text(language.technologiesUsed),
-        $('.contact-title').text(language.contactTitle),
-        $('.contact-first').text(language.contactFirst),
-        $('.contact-second').text(language.contactSecond),
-        $('.toast-message').text(language.toastMessage),
-        $('.submit-button').text(language.submitButton),
-        $('.name-placeholder').attr('placeholder', language.namePlaceholder),
-        $('.email-placeholder').attr('placeholder', language.emailPlaceholder),
-        $('.message-placeholder').attr('placeholder', language.messagePlaceholder)
-    ];
+let translationArray=[
+    $('.contact-button').text(language.contact),
+    $('.title').text(language.title),
+    $('.item-1').text(language.home),
+    $('.item-2').text(language.projects),
+    $('.item-3').text(language.about),
+    $('.item-4').text(language.contact),
+    $('.project-title').text(language.projectTitle),
+    $('.first-project-description').text(language.firstProjectDescription),
+    $('.first-project-technologies').text(language.firstProjectTechnologies),
+    $('.second-project-description').text(language.secondProjectDescription),
+    $('.second-project-technologies').text(language.secondProjectTechnologies),
+    $('.third-project-description').text(language.thirdProjectDescription),
+    $('.third-project-technologies').text(language.thirdProjectTechnologies),
+    $('.about-title').text(language.aboutTitle),
+    $('.about-first').text(language.aboutFirst),
+    $('.about-second').text(language.aboutSecond),
+    $('.about-third').text(language.aboutThird),
+    $('.about-fourth').text(language.aboutFourth),
+    $('.technologies-used').text(language.technologiesUsed),
+    $('.contact-title').text(language.contactTitle),
+    $('.contact-first').text(language.contactFirst),
+    $('.contact-second').text(language.contactSecond),
+    $('.toast-message').text(language.toastMessage),
+    $('.submit-button').text(language.submitButton),
+    $('.name-placeholder').attr('placeholder', language.namePlaceholder),
+    $('.email-placeholder').attr('placeholder', language.emailPlaceholder),
+    $('.message-placeholder').attr('placeholder', language.messagePlaceholder)
+];
     let animatedArray = translationArray.slice(1, translationArray.length);
     animatedArray.forEach(element=>{
-    animationTranslate(element);
+        animationTranslate(element);
     })
 };
 
@@ -325,6 +252,7 @@ function getlanguageSpanish(){
             translate(spanishLanguage);
         }
     });
+
     localStorage.setItem('language', 'es');
 };
 
@@ -347,7 +275,6 @@ $(document).ready(()=>{
     if(localStorage.getItem('language') === 'es'){
         getlanguageSpanish();
     }else{
-        (localStorage.getItem('language') === null)
         getlanguageEnglish();
     }
 });

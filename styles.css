@@ -38,7 +38,7 @@ body {
           box-sizing: border-box;
   padding: 0 7vw;
   width: 100vw;
-  height: 100vh;
+  height: 90vh;
   overflow: hidden;
   font-family: Sarala;
   color: white;
@@ -154,7 +154,7 @@ canvas {
 }
 
 .language-options {
-  margin-left: 65vw;
+  margin-left: 60vw;
   width: 20vw;
   height: 8vh;
   display: -webkit-box;
@@ -171,14 +171,16 @@ canvas {
       -ms-flex-align: center;
           align-items: center;
   position: fixed;
+  z-index: 8;
 }
 
 .english {
-  width: 10vw;
+  width: 100%;
 }
 
 .spanish {
-  width: 7vw;
+  width: 100%;
+  margin-left: 5vw;
 }
 
 .rings-container {
@@ -323,6 +325,8 @@ a:link, a:visited {
   padding: 7vw;
   background-color: #25282d;
   color: white;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .section-title {
@@ -415,14 +419,17 @@ a:link, a:visited {
   background-color: none;
   color: white;
   height: 6vh;
+  font-family: Sarala;
 }
 
 .email textarea::-moz-selection {
   background-color: none;
+  font-family: Sarala;
 }
 
 .email textarea::selection {
   background-color: none;
+  font-family: Sarala;
 }
 
 .toast-container {
@@ -533,5 +540,40 @@ input[name='name']::placeholder, input[name='mail']::placeholder {
 
 .social-logo {
   width: 8vw;
+}
+
+@media all and (min-width: 768px) {
+  .rings-container {
+    width: 55vw;
+    height: 55vw;
+  }
+  .outer-ring {
+    width: 50%;
+  }
+  .middle-ring {
+    width: 42%;
+  }
+  .inner-ring {
+    width: 32%;
+  }
+  .profile-photo {
+    width: 46%;
+  }
+  .name, .title {
+    font-size: 150%;
+  }
+  .project-image {
+    height: 35vh;
+  }
+  .project:last-child {
+    margin: 0;
+  }
+  .email {
+    font-size: 150%;
+    padding-top: 3vh;
+  }
+  .submit-button {
+    margin-top: 0;
+  }
 }
 /*# sourceMappingURL=styles.css.map */
