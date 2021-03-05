@@ -113,7 +113,6 @@ init();
 animate();
 
 
-
 // BURGER MENU ANIMATIONS
 gsap.registerPlugin();
 function openBurgerMenu(){
@@ -128,40 +127,111 @@ function openBurgerMenu(){
     const line3 = document.querySelector('.line-3');
     const cross = document.querySelector('.cross')
 
-        // TIMELINE FOR THE OPENING ANIMATION
-        cross.hidden = false;
-        burOpeTim = gsap.timeline();
-        burOpeTim
-        .to(line1, {x: -100, opacity: 0, duration: 0.5})
-        .to(line2, {opacity: 0, duration: 0.5}, "-=0.5")
-        .to(line3, {x: 100, opacity: 0, duration: 0.5}, '-=0.5')
-        .to(overlay, {duration: 0.5, top: 30, ease: 'back'})
-        .to(burgerMenu,{display: 'none'})
-        .from(item1,{duration: 0.2, scale:10, opacity: 0}, '-=0.5')
-        .from(item2,{duration: 0.2, scale:10, opacity: 0})
-        .from(item3,{duration: 0.2, scale:10, opacity: 0})
-        .from(item4,{duration: 0.2, scale:10, opacity: 0})
-        .from(cross,{opacity: 0, duration: 1}, '-=0.7');
-        
-        // CLOSES THE OVERLAY WHEN THE CROSS IS CLICKED
-        function closeBurgerMenu(){
-            cross.hidden = true;
-            gsap.to(burgerMenu,{display: 'flex'});
-            gsap.to(overlay, {top: '-50vh', duration: 0.5, ease: 'slow'});
-            gsap.to(line1, {x: 0, opacity: 1, duration: 0.5});
-            gsap.to(line2, {opacity: 1, duration: 0.5});
-            gsap.to(line3, {x: 0, opacity: 1, duration: 0.5});
-        }
-        // EVENT LISTENER TO CLOSE THE BURGER MENU
-        cross.addEventListener('click', closeBurgerMenu);
-        allNavigationItems.forEach(item=>{
-            item.addEventListener('click', closeBurgerMenu);
-        })
-}
+    // TIMELINE FOR THE OPENING ANIMATION
+    cross.hidden = false;
+    burOpeTim = gsap.timeline();
+    burOpeTim
+    .to(line1, {x: -100, opacity: 0, duration: 0.5})
+    .to(line2, {opacity: 0, duration: 0.5}, "-=0.5")
+    .to(line3, {x: 100, opacity: 0, duration: 0.5}, '-=0.5')
+    .to(burgerMenu,{display: 'none'})
+    .to(overlay, {duration: 0.5, top: 30, ease: 'back'}, '-=0.5')
+    .from(item1,{duration: 0.2, scale:10, opacity: 0}, '-=0.2')
+    .from(item2,{duration: 0.2, scale:10, opacity: 0})
+    .from(item3,{duration: 0.2, scale:10, opacity: 0})
+    .from(item4,{duration: 0.2, scale:10, opacity: 0})
+    .from(cross,{opacity: 0, duration: 1}, '-=0.7');
+    
+    // CLOSES THE OVERLAY WHEN THE CROSS IS CLICKED
+    function closeBurgerMenu(){
+        cross.hidden = true;
+        gsap.to(burgerMenu,{display: 'flex'});
+        gsap.to(overlay, {top: '-50vh', duration: 0.5, ease: 'slow'});
+        gsap.to(line1, {x: 0, opacity: 1, duration: 0.5});
+        gsap.to(line2, {opacity: 1, duration: 0.5});
+        gsap.to(line3, {x: 0, opacity: 1, duration: 0.5});
+    }
+    // EVENT LISTENER TO CLOSE THE BURGER MENU
+    cross.addEventListener('click', closeBurgerMenu);
+    allNavigationItems.forEach(item=>{
+        item.addEventListener('click', closeBurgerMenu);
+    });
+};
 
 // BURGER MENU INITIALIZATION
 const burgerMenu = document.querySelector('.burger-menu');
-burgerMenu.addEventListener('click', openBurgerMenu)
+burgerMenu.addEventListener('click', openBurgerMenu);
+
+
+function scrollingControl(){
+    //FINDS THE PERCENTAGE OF SCROLLING THROUGH THE PAGE
+    const lines = document.querySelectorAll(".scroll-line");
+    const scrollText = document.querySelector(".scroll-line-text");
+    const nextSectionButton = document.querySelector('.next-section-arrow');
+    const scrollingLines = document.querySelector('.scrolling-lines');
+    const firstSection = document.querySelector('.first-section');
+    const secondSection = document.querySelector('#projects');
+    const thirdSection = document.querySelector('#about');
+    const fourthSection = document.querySelector('#contact');
+    const progress = Math.ceil(((window.scrollY)/(document.body.scrollHeight - window.innerHeight)*100));
+    let currentSection = '';
+    console.log(progress);
+
+    switch(true){
+      case (progress<12):
+        scrollText.textContent = 'Home';
+        currentSection = 'Home';
+        nextSectionButton.onclick = ()=>{secondSection.scrollIntoView()};
+        gsap.to(scrollingLines,{backgroundColor: 'transparent', duration: 0.5, padding: 0})
+        break;
+      case (progress>12 && progress<56):
+        scrollText.textContent = 'Projects';
+        currentSection = 'Projects';
+        nextSectionButton.onclick = ()=>{thirdSection.scrollIntoView()};
+        gsap.to(scrollingLines,{backgroundColor: 'rgba(0,0,0,0.8)', duration: 0.5, padding: "4vh", borderRadius: '10px'})
+        break;
+      case (progress>49 && progress<80):
+        scrollText.textContent = 'About';
+        currentSection = 'About';
+        nextSectionButton.onclick = ()=>{fourthSection.scrollIntoView()};
+        break;
+      case (progress>79 && progress<99):
+        scrollText.textContent = 'Contact';
+        currentSection = 'Cotnact';
+        nextSectionButton.onclick = ()=>{firstSection.scrollIntoView()};
+        break;
+      default:
+        console.log("Where was I?");
+        break;
+    }
+    
+    // ANIMATIONS FOR THE NEXT SECTION ARROW
+    nextSectionButton.onmouseenter = ()=>{gsap.to(nextSectionButton, {scale: 2, duration: 0.3});};
+    nextSectionButton.onmouseleave = ()=>{gsap.to(nextSectionButton, {scale: 1, duration: 0.3});};
+
+    // SHOWS THE NAME OF THE TARGET SECTION WHEN HOVERING
+    lines.forEach(line=>{
+        line.addEventListener('mouseenter', ()=>{
+            const sections = {
+                scrollLine1: "Home",
+                scrollLine2: "Projects",
+                scrollLine3: "About",
+                scrollLine4: "Contact",
+            }
+        scrollText.textContent = `${sections[line.id]}`;
+        gsap.to(line, {scale: 2, duration: 0.3});
+    })});
+    // RETURNS THE NAME OF THE SECTION WHEN HOVERING ENDS
+    lines.forEach(line=>{
+      line.addEventListener('mouseleave', ()=>{
+        scrollText.textContent = currentSection;
+        gsap.to(line, {scale: 1, duration: 0.3});
+    })});
+    };
+
+    // EVENT LISTENERS WHEN THE PAGE LOADS AND EVERYTIME A SCROLL HAPPEN
+    window.addEventListener('scroll', scrollingControl);
+    window.addEventListener('load', scrollingControl);
 
 
 //ARROW ANIMATION
@@ -170,7 +240,6 @@ function arrowAnimation(){
     arrowScroll.classList.add("arrow-visible");
     gsap.to(arrowScroll, {duration: 2, opacity: 0.1, repeat: -1});
 }
-
 // STOPS THE ARROW ANIMATION WHEN SCROLL IS DETECTED
 function stopArrow(){
     arrowScroll.classList.remove("arrow-visible");
@@ -191,10 +260,10 @@ email.addEventListener('click', ()=>{
     toast.classList.add('toast-visible');
     gsap.from(toast, {opacity: 0, duration: 0.5});
     gsap.to(toast, {opacity: 1});
-    gsap.to(toast,{opacity: 0, delay: 2, duration: 0.7});
+    gsap.to(toast,{opacity: 0, delay: 2.5, duration: 0.7});
     setTimeout(()=>{
         toast.classList.remove('toast-visible');
-    }, 2700)
+    }, 3000)
 })
 
 
@@ -213,6 +282,10 @@ let translationArray=[
     $('.item-2').text(language.projects),
     $('.item-3').text(language.about),
     $('.item-4').text(language.contact),
+    $('.nav-1').text(language.home),
+    $('.nav-2').text(language.projects),
+    $('.nav-3').text(language.about),
+    $('.nav-4').text(language.contact),
     $('.project-title').text(language.projectTitle),
     $('.first-project-description').text(language.firstProjectDescription),
     $('.first-project-technologies').text(language.firstProjectTechnologies),
@@ -257,7 +330,7 @@ function getlanguageSpanish(){
 // REQUEST ENGLISH LANGUAGE
 function getlanguageEnglish(){
     $.ajax({ 
-        url: `/language/en.json`, 
+        url: '/language/en.json', 
         dataType: 'json', async: true, 
         success: (data)=> {
             const englishLanguage = data;
@@ -279,6 +352,37 @@ $(document).ready(()=>{
 // EVENTS LISTENERS FOR THE LANGUAGE BUTTONS
 $('.spanish').click(getlanguageSpanish);
 $('.english').click(getlanguageEnglish);
+
+
+
+// REVEAL THE PROJECT LINKS
+function revealLinks(element){
+    const firstchild = element.children[0];
+    const secondchild = element.children[1];
+
+    gsap.to(firstchild, {duration: 0.3, opacity: 0.3});
+    gsap.to(secondchild, {duration: 0.3, opacity: 1});
+    console.log(element.children[1]);
+}
+// HIDES THE PROJECT LINKS
+function hideLinks(element){
+    const firstchild = element.children[0];
+    const secondchild = element.children[1];
+
+    gsap.to(firstchild, {duration: 0.3, opacity: 1});
+    gsap.to(secondchild, {duration: 0.5, opacity: 0});
+    console.log(element.children[1]);
+}
+// ADDS EVEN LISTENERS TO THE PROJECT IMAGES AND CALL THE FUNCTION TO SHOW THE LINKS
+const projectImages = document.querySelectorAll('.project-images-container');
+projectImages.forEach(element=>{
+    element.onmouseenter =()=>{revealLinks(element);
+}})
+// ADDS EVEN LISTENERS TO THE PROJECT IMAGES AND CALL THE FUNCTION TO HIDE THE LINKS
+projectImages.forEach(element=>{
+    element.onmouseleave =()=>{hideLinks(element);
+}})
+
 
 
 

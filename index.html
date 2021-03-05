@@ -12,6 +12,8 @@
     <div class="first-section" id='home'>
         <!-- CANVAS FOR THE DOTS ANIMATIONS -->
         <canvas></canvas>
+        <!-- POPOVER - HOVER -->
+        <div class="popover"></div>
         <!-- NAVIGATION -->
         <div class="navigation-bar">
             <!-- BURGER MENU  -->
@@ -20,10 +22,19 @@
                 <div class="line line-2"></div>
                 <div class="line line-3"></div>
             </div>
+            <!-- NAVIGATION ELEMENTS FOR DESKTOP -->
+            <div class="navigation-items-desktop">
+                <ul class="navigation-list-desktop">
+                    <a id="home-item" href='#home'><li class="nav-1"></li></a>
+                    <a href='#projects'><li class="nav-2"></li></a>
+                    <a href='#about'><li class="nav-3"></li></a>
+                    <a href='#contact'><li class="nav-4"></li></a>
+                </ul>
+            </div>
             <!-- LANGUAGES -->
             <div class="language-options">
-                <a href='#en'><img class="english" src='images/english.svg' alt='Britain Flag'></a>
-                <a href='#es'><img class="spanish" src='images/spanish.svg' alt='Spain Flag'></a>
+                <span>EN </span><a href='#en'><img class="english" id="english" src='images/english.svg' alt='Britain Flag'></a>
+                <span>ES&nbsp;</span><a href='#es'><img class="spanish" id="spanish" src='images/spanish.svg' alt='Spain Flag'></a>
             </div>
         </div>
         
@@ -33,9 +44,9 @@
             <div class="close-arrow-container">
                 <img class="cross" src="images/cross.svg" alt="Close Arrow Icon">
             </div>
-            <!-- NAVIGATION ELEMENTS -->
+            <!-- NAVIGATION ELEMENTS INSIDE THE OVERLAY-->
             <div class="navigation-items">
-                <ul>
+                <ul class="navigation-list">
                     <a href='#home'><li class="navigation-item item-1"></li></a>
                     <a href='#projects'><li class="navigation-item item-2"></li></a>
                     <a href='#about'><li class="navigation-item item-3"></li></a>
@@ -60,6 +71,18 @@
             <p class="title" id="title"></p>
         </div>
 
+        <!-- SCROLLING LINES -->
+        <div class="scrolling-lines-container">
+            <div class="scrolling-lines">
+                <span class="scroll-line-text">Home</span>
+                <a href="#home"><img src="images/line.svg" alt="Section Line Indicator" class="scroll-line scroll-line-1" id="scrollLine1"></img></a>
+                <a href="#projects"><img src="images/line.svg" alt="Section Line Indicator" class="scroll-line scroll-line-2" id="scrollLine2"></img></a>
+                <a href="#about"><img src="images/line.svg" alt="Section Line Indicator" class="scroll-line scroll-line-3" id="scrollLine3"></img></a>
+                <a href="#contact"><img src="images/line.svg" alt="Section Line Indicator" class="scroll-line scroll-line-4" id="scrollLine4"></img></a>
+                <img class="next-section-arrow" src="images/next-section-arrow.svg" alt="Next Section button"></a>
+            </div>
+        </div>
+
         <!-- CONTACT ME BUTTON -->
         <div class="contact-button-container">
             <a href="#contact"><button class="contact-button">Contact Me</button></a>
@@ -74,12 +97,24 @@
 
 
     <!-- SECOND SECTION - PROJECTS-->
-    <div class="section" id='projects'>
+    <div class="section project-section" id='projects'>
         <!-- SECOND SECTION TITLE -->
         <h2 class="section-title project-title">Projects</h2>
         <!-- FIRST PROJECT -->
-        <div class="project">
-            <img class="project-image" src="images/cook's treat.jpg" alt="Cook's Treat Application">
+        <div class="project project-1">
+            <div class="project-images-container">
+                <img class="project-image cook-image" src="images/cook's treat.jpg" alt="Cook's Treat Application">
+                <div class="project-links">
+                    <div class='link-info'>
+                        <a href="https://quasarzet.github.io/cooking-treats/" target='_blank'><img class="website-link" src="images/web.svg" alt="Website Icon"></a>
+                        <p>Website</p>
+                    </div>
+                    <div class="link-info">
+                        <a href="https://github.com/quasarzet/cooking-treats/tree/master" target='_blank'><img class="github-link" src="images/code.svg" alt="Html Tags Icon"></a>
+                        <p>Code</p>
+                    </div>
+                </div>
+            </div>
             <div class="project-text">
                 <p class="first-project-description">Cook's Treat is an application that requests recipes from the Tasty API, and returns the results in an organized way.</p>
                 <p class="first-project-technologies">Technologies: </br>HTML, CSS/SASS, JAVASCRIPT, GSAP, AXIOS, ILLUSTRATOR, PHOTOSHOP, XD, SVG.</p>
@@ -87,8 +122,20 @@
         </div>
         
         <!-- SECOND PROJECT -->
-        <div class="project">
-            <img class="project-image" src="images/exortus.jpg" alt="Exortus Application">
+        <div class="project project-2">
+            <div class="project-images-container">
+                <img class="project-image exortus-image" src="images/exortus.jpg" alt="Exortus Application">
+                <div class="project-links">
+                    <div class='link-info'>
+                        <a href="https://quasarzet.github.io/exortus/" target='_blank'><img class="website-link" src="images/web.svg" alt="Website Icon"></a>
+                        <p>Website</p>
+                    </div>
+                    <div class='link-info'>
+                        <a href="https://github.com/quasarzet/exortus/tree/master" target='_blank'><img class="github-link" src="images/code.svg" alt="Html Tags Icon"></a>
+                        <p>Code</p>
+                    </div>
+                </div>
+            </div>
             <div class="project-text">
                 <p class="second-project-description">Exortus is a complete website about a fictional transportation company that includes API requests to OpenWeather, images altered in photoshop and intricated animations. All the elements like the burger menu, accordion, slideshows, etc. have been programmed in JavaScript without the use of any libraries or frameworks.</p>
                 <p class="second-project-technologies">Technologies:</br> HTML, CSS/SASS, JAVASCRIPT, GSAP, AXIOS, ILLUSTRATOR, PHOTOSHOP, XD, SVG</p>
@@ -96,8 +143,20 @@
         </div>
 
         <!-- THIRD PROJECT -->
-        <div class="project">
-            <img class="project-image" src="images/thanksgiving.jpg" alt="Thanksgiving Application">
+        <div class="project project-3">
+            <div class="project-images-container">
+                <img class="project-image thanksgiving-image" src="images/thanksgiving.jpg" alt="Thanksgiving Application">
+                <div class="project-links">
+                    <div class='link-info'>
+                        <a href="https://quasarzet.github.io/thanksgiving/" target='_blank'><img class="website-link" src="images/web.svg" alt="Website Icon"></a>
+                        <p>Website</p>
+                    </div>
+                    <div class="link-info">
+                        <a href="https://github.com/quasarzet/thanksgiving/tree/master" target='_blank'><img class="github-link" src="images/code.svg" alt="Html Tags Icon"></a>
+                        <p>Code</p>
+                    </div>
+                </div>
+            </div>
             <div class="project-text">
                 <p class="third-project-description">I AM THANKSGIVING is the landing page for a potential new restaurant in the city of Boston. Most visual elements have been altered using photoshop, while the SVG elements were edited with Illustrator.</p>
                 <p class="third-project-technologies">Technologies: </br>HTML, CSS/SASS, JAVASCRIPT, GSAP, ILLUSTRATOR, PHOTOSHOP, XD, SVG</p>
@@ -107,7 +166,7 @@
  
 
     <!-- THIRD SECTION - ABOUT -->
-    <div class="section" id='about'>
+    <div class="section about-section" id='about'>
         <h2 class="section-title about-title">About</h2>
         <div class="about-text">
             <p class="about-first">I am Julian Montoya Franco, a Front End Developer located in Boston, Massachusetts.</p>
@@ -117,23 +176,23 @@
         </div>
         <p class="technologies-used">Technologies I use:</p>
         <div class="technologies">
-            <img class="technology-logo" src="images/technologies/html.svg" alt="Html Logo">
-            <img class="technology-logo" src="images/technologies/css.svg" alt="Css Logo">
-            <img class="technology-logo" src="images/technologies/javascript.svg" alt="Javascript Logo">
-            <img class="technology-logo" src="images/technologies/jquery.svg" alt="JQuery Logo">
-            <img class="technology-logo" src="images/technologies/bootstrap.svg" alt="Bootstrap Logo">
-            <img class="technology-logo" src="images/technologies/photoshop.svg" alt="Photoshop Logo">
-            <img class="technology-logo" src="images/technologies/illustrator.svg" alt="Illustrator Logo">
-            <img class="technology-logo" src="images/technologies/xd.svg" alt="Adobe XD Logo">
-            <img class="technology-logo" src="images/technologies/sass.svg" alt="SASS Logo">
-            <img class="technology-logo" src="images/technologies/github-black.svg" alt="GitHub Logo">
-            <img class="technology-logo" src="images/technologies/vs-code.svg" alt="Visual Studio Code Logo">
+            <img class="technology-logo" id="Html" src="images/technologies/html.svg" alt="Html Logo">
+            <img class="technology-logo" id="Css" src="images/technologies/css.svg" alt="Css Logo">
+            <img class="technology-logo" id="Javascript" src="images/technologies/javascript.svg" alt="Javascript Logo">
+            <img class="technology-logo" id="JQuery" src="images/technologies/jquery.svg" alt="JQuery Logo">
+            <img class="technology-logo" id="Bootstrap" src="images/technologies/bootstrap.svg" alt="Bootstrap Logo">
+            <img class="technology-logo" id="Photoshop" src="images/technologies/photoshop.svg" alt="Photoshop Logo">
+            <img class="technology-logo" id="Illustrator" src="images/technologies/illustrator.svg" alt="Illustrator Logo">
+            <img class="technology-logo" id="Adobe" src="images/technologies/xd.svg" alt="Adobe XD Logo">
+            <img class="technology-logo" id="SASS" src="images/technologies/sass.svg" alt="SASS Logo">
+            <img class="technology-logo" id="GitHub" src="images/technologies/github-black.svg" alt="GitHub Logo">
+            <img class="technology-logo" id="Visual-Studio-Code" src="images/technologies/vs-code.svg" alt="Visual Studio Code Logo">
         </div>
     </div>
 
 
     <!-- FOURTH SECTION - CONTACT-->
-    <div class="section" id='contact'>
+    <div class="section contact-section" id='contact'>
         <h2 class="section-title contact-title">Contact</h2>
         <div class="contact-text">
             <span class="contact-first">If you are interested in hiring me</span></br>
@@ -150,9 +209,9 @@
                 <button class="submit-button" type="submit" name="submit">Submit</button>
             </form>
         <div class="social-container">
-            <img class="social-logo" src="images/technologies/github.svg" alt="GitHub Logo">
-            <img class="social-logo" src="images/technologies/linkedin.svg" alt="LinkedIn Logo">
-            <img class="social-logo" src="images/technologies/codepen.svg" alt="Codepen Logo">
+            <a href="https://github.com/quasarzet?tab=repositories"><img class="social-logo" src="images/technologies/github.svg" alt="GitHub Logo"></a>
+            <a href="linkedin.com"><img class="social-logo" src="images/technologies/linkedin.svg" alt="LinkedIn Logo"></a>
+            <a href="https://codepen.io/your-work"><img class="social-logo" src="images/technologies/codepen.svg" alt="Codepen Logo"></a>
         </div>
     </div>
 
