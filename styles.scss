@@ -675,18 +675,21 @@ input[name='name']::placeholder, input[name='mail']::placeholder{
     }
     .contact-title{
         margin-top: 0;
-    }.email{
+    }
+    .email{
         padding-top: 2vh;
         padding-bottom: 0;
         min-height: 7vh;
         width: 25vw;
+        margin: 0 auto;
     }
     textarea{
         resize: none;
-        margin: 0;
+        margin: 0 auto;
         display: block;
     }
     .contact-form{
+        margin-top: 2vh;
         width: 30vw;
         min-height: 50vh;
     }

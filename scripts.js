@@ -315,12 +315,12 @@ let translationArray=[
 };
 
 // REQUEST SPANISH LANGUAGE
-function getlanguageSpanish(){
+function getLanguageSpanish(){
     $.ajax({ 
         url: 'language/es.json', 
         dataType: 'json', async: true, 
-        success: (data)=> {
-            const spanishLanguage = data;
+        success: (spanishData)=> {
+            const spanishLanguage = spanishData;
             translate(spanishLanguage);
         }
     });
@@ -328,12 +328,12 @@ function getlanguageSpanish(){
 };
 
 // REQUEST ENGLISH LANGUAGE
-function getlanguageEnglish(){
+function getLanguageEnglish(){
     $.ajax({ 
         url: '/language/en.json', 
         dataType: 'json', async: true, 
-        success: (data)=> {
-            const englishLanguage = data;
+        success: (englishData)=> {
+            const englishLanguage = englishData;
             translate(englishLanguage);
         }
     });
@@ -343,15 +343,15 @@ function getlanguageEnglish(){
 // CHECKS THAT THE WEBSITE HAS LOADED, AND LOADS THE LATEST LANGUAGE REGISTERED
 $(document).ready(()=>{
     if(localStorage.getItem('language') === 'es'){
-        getlanguageSpanish();
+        getLanguageSpanish();
     }else{
-        getlanguageEnglish();
+        getLanguageEnglish();
     }
 });
 
 // EVENTS LISTENERS FOR THE LANGUAGE BUTTONS
-$('.spanish').click(getlanguageSpanish);
-$('.english').click(getlanguageEnglish);
+$('.spanish').click(getLanguageSpanish);
+$('.english').click(getLanguageEnglish);
 
 
 
