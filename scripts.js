@@ -317,7 +317,7 @@ let translationArray=[
 // REQUEST SPANISH LANGUAGE
 function getLanguageSpanish(){
     $.ajax({ 
-        url: 'https://quasarzet.github.io/language/es.json', 
+        url: 'https://quasarzet.github.io/portfolio/language/es.json', 
         dataType: 'json', async: true, 
         success: (spanishData)=> {
             const spanishLanguage = spanishData;
@@ -332,7 +332,7 @@ function getLanguageSpanish(){
 function getLanguageEnglish(){
     $.ajax({ 
         // url: '/language/en.json', 
-        url: 'https://quasarzet.github.io/language/es.json',
+        url: 'https://quasarzet.github.io/portfolio/language/en.json',
         dataType: 'json', async: true, 
         success: (englishData)=> {
             let englishLanguage = englishData;
