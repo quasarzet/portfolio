@@ -317,7 +317,7 @@ let translationArray=[
 // REQUEST SPANISH LANGUAGE
 function getLanguageSpanish(){
     $.ajax({ 
-        url: 'language/es.json', 
+        url: 'https://quasarzet.github.io/language/es.json', 
         dataType: 'json', async: true, 
         success: (spanishData)=> {
             const spanishLanguage = spanishData;
@@ -325,15 +325,17 @@ function getLanguageSpanish(){
         }
     });
     localStorage.setItem('language', 'es');
+    
 };
 
-// REQUEST ENGLISH LANGUAGE
+// REQUESTS ENGLISH LANGUAGE
 function getLanguageEnglish(){
     $.ajax({ 
-        url: '/language/en.json', 
+        // url: '/language/en.json', 
+        url: 'https://quasarzet.github.io/language/es.json',
         dataType: 'json', async: true, 
         success: (englishData)=> {
-            const englishLanguage = englishData;
+            let englishLanguage = englishData;
             translate(englishLanguage);
         }
     });
@@ -344,7 +346,8 @@ function getLanguageEnglish(){
 $(document).ready(()=>{
     if(localStorage.getItem('language') === 'es'){
         getLanguageSpanish();
-    }else{
+    }
+    else{
         getLanguageEnglish();
     }
 });
