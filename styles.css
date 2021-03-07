@@ -20,7 +20,7 @@ body {
   font-family: Sarala;
 }
 
-.navigation-items-desktop, .scrolling-lines, .popover, .project-links {
+.navigation-items-desktop, .scrolling-lines, .popover {
   display: none;
 }
 
@@ -54,6 +54,17 @@ canvas {
   background: radial-gradient(circle, #444444 0%, #111111 64%, black 100%);
   background-repeat: no-repeat;
   position: absolute;
+}
+
+.welcome-message {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2/3;
+  text-align: center;
+  font-size: 2.5em;
 }
 
 .navigation-bar {
@@ -296,8 +307,8 @@ canvas {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-bottom: 5vh;
-  z-index: 5;
+  margin-top: -5vh;
+  z-index: 6;
 }
 
 .tab-scroll {
@@ -375,11 +386,71 @@ a {
   margin-bottom: 4vh;
 }
 
+.project-images-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+}
+
 .project-image {
   width: 100%;
   height: 24vh;
   border-radius: 10px 10px 0 0;
   position: relative;
+}
+
+.project-links {
+  opacity: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 25vh;
+  height: 15vh;
+  position: absolute;
+  z-index: 9;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 2vh 2vw;
+  border-radius: 10px;
+}
+
+.link-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.website-link {
+  width: 10vw;
+}
+
+.github-link {
+  width: 12vw;
 }
 
 .project-text {
@@ -390,6 +461,7 @@ a {
 
 .about-section {
   padding-top: 0;
+  background-color: #10141f;
 }
 
 .about-title {
@@ -607,7 +679,7 @@ input[name='name']::placeholder, input[name='mail']::placeholder {
   }
   .email {
     font-size: 150%;
-    padding-top: 3vh;
+    padding-top: 1vh;
   }
   .submit-button {
     margin-top: 0;
@@ -627,6 +699,9 @@ input[name='name']::placeholder, input[name='mail']::placeholder {
   }
   .burger-menu, .overlay, #home-item {
     display: none;
+  }
+  .navigation-items-desktop {
+    display: inline-block;
   }
   .popover {
     display: none;
@@ -754,6 +829,9 @@ input[name='name']::placeholder, input[name='mail']::placeholder {
     -ms-grid-row-span: 1;
     grid-row: 2/3;
   }
+  .name, .title {
+    text-shadow: 2px 2px 5px white;
+  }
   .scrolling-lines-container {
     -ms-grid-column: 4;
     -ms-grid-column-span: 1;
@@ -826,23 +904,14 @@ input[name='name']::placeholder, input[name='mail']::placeholder {
             filter: brightness(120%);
     -webkit-transform: scale(1.1);
             transform: scale(1.1);
+    cursor: pointer;
   }
-  .tab-container {
-    -ms-grid-column: 1;
-    -ms-grid-column-span: 4;
-    grid-column: 1/5;
-    -ms-grid-row: 3;
-    -ms-grid-row-span: 1;
-    grid-row: 3/4;
-    margin: 0 auto;
-    margin-bottom: -10vh;
-  }
-  .tab-scroll {
-    width: 8%;
-  }
-  .arrow-scroll {
-    margin-top: 1.5vh;
-    width: 1.5%;
+  .scroll-line:hover, .next-section-arrow:hover, .english:hover, .spanish:hover {
+    -webkit-transition-duration: 0.3s ease-in;
+            transition-duration: 0.3s ease-in;
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+    cursor: pointer;
   }
   .project-section {
     display: -ms-grid;
@@ -857,7 +926,24 @@ input[name='name']::placeholder, input[name='mail']::placeholder {
         -ms-flex-align: center;
             align-items: center;
     justify-items: center;
-    overflow: hidden;
+  }
+  .tab-container {
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 1;
+    grid-column: 2/3;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    grid-row: 1/2;
+    margin: 0 auto;
+    margin-bottom: 22vh;
+    z-index: 9;
+  }
+  .tab-scroll {
+    width: 10vw;
+  }
+  .arrow-scroll {
+    margin-top: 1vh;
+    width: 2%;
   }
   .project-title {
     -ms-grid-column: 1;
@@ -964,6 +1050,7 @@ input[name='name']::placeholder, input[name='mail']::placeholder {
             transform: scale(1.2);
     -webkit-transition-duration: 0.3s;
             transition-duration: 0.3s;
+    cursor: pointer;
   }
   .project-text {
     overflow: hidden;
@@ -981,12 +1068,27 @@ input[name='name']::placeholder, input[name='mail']::placeholder {
   .technologies-used {
     font-size: 300%;
   }
+  .technology-title {
+    background-color: #202433;
+    padding: 0 2vw;
+    border-radius: 10px 10px 0 0;
+    z-index: 2;
+    min-width: 16vw;
+    height: 8vh;
+  }
+  .technology-text {
+    font-size: 1.5em;
+    opacity: 0;
+    text-align: center;
+    z-index: 2;
+  }
   .technologies {
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
     width: 70vw;
     min-height: 20vh;
     padding: 0;
+    z-index: 9;
   }
   .technology-logo {
     width: 6%;

@@ -1,3 +1,5 @@
+gsap.registerPlugin(ScrollTrigger);
+
 // CANVAS ANIMATIONS
 const canvas = document.querySelector('canvas');
 const firstSection = document.querySelector('.first-section');
@@ -29,8 +31,6 @@ window.addEventListener('mousemove', function(event){
 
 // DETECTS A RESIZE AND ADJUSTS THE CANVAS SIZE
 window.addEventListener('resize', function(){
-    // canvas.width = window.innerWidth;
-    // canvas.height = window.innerHeight;
     canvas.width = firstSection.clientWidth;
     canvas.height = firstSection.clientHeight;
     init();
@@ -178,24 +178,22 @@ function scrollingControl(){
     console.log(progress);
 
     switch(true){
-      case (progress<12):
+      case (progress<18):
         scrollText.textContent = 'Home';
         currentSection = 'Home';
         nextSectionButton.onclick = ()=>{secondSection.scrollIntoView()};
-        gsap.to(scrollingLines,{backgroundColor: 'transparent', duration: 0.5, padding: 0})
         break;
-      case (progress>12 && progress<56):
+      case (progress>17 && progress<51):
         scrollText.textContent = 'Projects';
         currentSection = 'Projects';
         nextSectionButton.onclick = ()=>{thirdSection.scrollIntoView()};
-        gsap.to(scrollingLines,{backgroundColor: 'rgba(0,0,0,0.8)', duration: 0.5, padding: "4vh", borderRadius: '10px'})
         break;
-      case (progress>49 && progress<80):
+      case (progress>50 && progress<86):
         scrollText.textContent = 'About';
         currentSection = 'About';
         nextSectionButton.onclick = ()=>{fourthSection.scrollIntoView()};
         break;
-      case (progress>79 && progress<99):
+      case (progress>85):
         scrollText.textContent = 'Contact';
         currentSection = 'Cotnact';
         nextSectionButton.onclick = ()=>{firstSection.scrollIntoView()};
@@ -203,6 +201,13 @@ function scrollingControl(){
       default:
         console.log("Where was I?");
         break;
+    }
+
+    // SCROLLING BAR BACKGROUND ANIMATION
+    if(progress>17){
+        gsap.to(scrollingLines,{backgroundColor: 'rgba(0,0,0,0.8)', duration: 0.5, padding: "4vh", borderRadius: '10px'});
+    }else{
+        gsap.to(scrollingLines,{backgroundColor: 'transparent', duration: 0.5, padding: 0})
     }
     
     // ANIMATIONS FOR THE NEXT SECTION ARROW
@@ -274,7 +279,7 @@ function animationTranslate(element){
 
 // CREATES AN ARRAY WITH ALL THE TEXT ELEMENTS AND ASSINGS THE MATCHING VALUE FROM
 // JSON LANGUAGE FILES
-function translate(language){
+function translate(language, iteration){
 let translationArray=[
     $('.contact-button').text(language.contact),
     $('.title').text(language.title),
@@ -308,37 +313,38 @@ let translationArray=[
     $('.email-placeholder').attr('placeholder', language.emailPlaceholder),
     $('.message-placeholder').attr('placeholder', language.messagePlaceholder)
 ];
-    let animatedArray = translationArray.slice(1, translationArray.length);
+    let animatedArray = translationArray.slice(10, translationArray.length);
     animatedArray.forEach(element=>{
-        animationTranslate(element);
-    })
+       animationTranslate(element);
+        })
 };
 
 // REQUEST SPANISH LANGUAGE
+let iteration = 0;
 function getLanguageSpanish(){
     $.ajax({ 
         url: 'https://quasarzet.github.io/portfolio/language/es.json', 
         dataType: 'json', async: true, 
         success: (spanishData)=> {
             const spanishLanguage = spanishData;
-            translate(spanishLanguage);
+            translate(spanishLanguage, iteration);
         }
     });
+    iteration++;
     localStorage.setItem('language', 'es');
-    
 };
 
 // REQUESTS ENGLISH LANGUAGE
 function getLanguageEnglish(){
     $.ajax({ 
-        // url: '/language/en.json', 
         url: 'https://quasarzet.github.io/portfolio/language/en.json',
         dataType: 'json', async: true, 
         success: (englishData)=> {
             let englishLanguage = englishData;
-            translate(englishLanguage);
+            translate(englishLanguage, iteration);
         }
     });
+    iteration++;
     localStorage.setItem('language', 'en');
 };
 
@@ -385,6 +391,97 @@ projectImages.forEach(element=>{
 projectImages.forEach(element=>{
     element.onmouseleave =()=>{hideLinks(element);
 }})
+
+
+// STARTING ANIMATIONS FOR DESKTOP
+function onLoadAnimations(){
+    const canvas = $('canvas');
+    const welcomeMessage = $('.welcome-message');
+    const navigationItem2 = $('.nav-2');
+    const navigationItem3 = $('.nav-3');
+    const navigationItem4 = $('.nav-4');
+    const name = $('.name');
+    const title = $('.title');
+    const languages = $('.language-options');
+    const profilePhoto = $('.profile-photo');
+    const innerRing = $('.inner-ring');
+    const middleRing = $('.middle-ring');
+    const outerRing = $('.outer-ring');
+    const scrollLines = $('.scrolling-lines-container');
+    const contactButton = $('.contact-button');
+    const firstProject = $('.project-1');
+    const secondProject = $('.project-2');
+    const thirdProject = $('.project-3');
+    const technologyTitle = $('.technology-title');
+    const technologies = $('.technologies');
+    
+    // FIRST SECTION ANIMATIONS
+    const startingAnimations = gsap.timeline();
+    startingAnimations
+    .from(canvas, {opacity: 0, duration: 5}, 0)
+    .from(welcomeMessage, {opacity: 0, duration: 2}, 0)
+    .from(navigationItem2, {opacity: 0, scale: (0.2), duration: 0.5}, 7)
+    .from(navigationItem3, {opacity: 0, scale: (0.2), duration: 0.5}, 7.2)
+    .from(navigationItem4, {opacity: 0, scale: (0.2), duration: 0.5}, 7.4)
+    .to(welcomeMessage, {opacity: 0, duration: 1}, 3)
+    .to(welcomeMessage, {display: 'none'}, 3.5)
+    .from([name,title], {x:'-80vh', duration: 0.5}, 7)
+    .from(profilePhoto,{opacity: 0, duration: 1}, 4)
+    .from(innerRing,{opacity: 0, duration: 1}, 5)
+    .from(middleRing,{opacity: 0, duration: 1}, 6)
+    .from(outerRing,{opacity: 0, duration: 1}, 7)
+    .from([scrollLines,languages], {x:'40vh', duration: 0.5}, 7.2)
+    .from(contactButton,{opacity: 0, duration: 1}, 7.2)
+
+    // PROJECT SECTION ANIMATIONS
+    const projectsTimeline = gsap.timeline({
+        scrollTrigger: {
+            trigger:firstProject,
+            start:"top center",
+            toggleActions:"play none none none"
+        }
+    });
+    projectsTimeline
+    .from(firstProject,{ease: 'expo', transform: 'rotateY(90deg)', opacity: 0, y: 100, duration: 1})
+    .from(secondProject,{ease: 'expo', transform: 'rotateY(90deg)', opacity: 0, y: 100, duration: 1}, 0.3)
+    .from(thirdProject,{ease: 'expo', transform: 'rotateY(90deg)', opacity: 0, y: 100, duration: 1}, 0.6)
+    .from([technologyTitle, technologies], {opacity: 0, duration: 2});
+}
+
+onLoadAnimations();
+
+
+// TECHNOLOGIES DESCRIPTION ANIMATION
+function technologyDescription(){
+    const technologies = document.querySelectorAll('.technology-logo');
+    const technologyTitle = document.querySelector('.technology-title');
+    const technologyText = document.querySelector('.technology-text');
+    
+    function revealDescription(element){
+        technologyText.textContent = element.id;
+        gsap.to(technologyTitle,{transform: 'scaleY(1)', y:0, opacity: 1, transformOrigin: 'bottom', duration: 0.5});
+        gsap.to(technologyText, {opacity: 1, duration: 1});
+    }
+
+    function hideDescription(element){
+        technologyText.textContent = '';
+        gsap.to(technologyTitle,{transform: 'scaleY(0.1)', y: 30, opacity: 0, transformOrigin: 'bottom', duration: 0.5});
+        gsap.to(technologyText, {opacity: 0, duration: 1});
+    }
+
+    technologies.forEach(element=>{
+        element.onmouseenter = ()=>{
+            revealDescription(element);
+        };
+    });
+
+    technologies.forEach(element=>{
+        element.onmouseleave = ()=>{
+            hideDescription(element);
+        };
+    });
+};
+technologyDescription();
 
 
 

@@ -12,8 +12,8 @@
     <div class="first-section" id='home'>
         <!-- CANVAS FOR THE DOTS ANIMATIONS -->
         <canvas></canvas>
-        <!-- POPOVER - HOVER -->
-        <div class="popover"></div>
+        <!-- WELCOME MESSAGE -->
+        <p class="welcome-message">Welcome,</br>I'm Julian Montoya Franco</br>and this is my portfolio</p>
         <!-- NAVIGATION -->
         <div class="navigation-bar">
             <!-- BURGER MENU  -->
@@ -68,7 +68,7 @@
         <!-- NAME AND TITLE -->
         <div class="name-title-container">
             <p class="name" id="name">Julian Montoya Franco</p>
-            <p class="title" id="title"></p>
+            <p class="title" id="title">Front-End Developer</p>
         </div>
 
         <!-- SCROLLING LINES -->
@@ -88,16 +88,17 @@
             <a href="#contact"><button class="contact-button">Contact Me</button></a>
         </div>
 
-        <!-- TAB  ARROW SCROLL -->
-        <div class="tab-container">
-            <img class="tab-scroll" src="images/tab.svg" alt="Scrolling Tab" >
-            <img class="arrow-scroll" src="images/arrow.svg" alt="Scrolling Arrow" >
-        </div>
+        
     </div>
 
 
     <!-- SECOND SECTION - PROJECTS-->
     <div class="section project-section" id='projects'>
+        <!-- TAB  ARROW SCROLL -->
+        <div class="tab-container">
+            <img class="tab-scroll" src="images/tab.svg" alt="Scrolling Tab" >
+            <img class="arrow-scroll" src="images/arrow.svg" alt="Scrolling Arrow" >
+        </div>
         <!-- SECOND SECTION TITLE -->
         <h2 class="section-title project-title">Projects</h2>
         <!-- FIRST PROJECT -->
@@ -175,18 +176,19 @@
             <p class="about-fourth">When I'm not learning new technologies I can be found riding my  motorcycle, listening to classical and opera music, drawing, playing  videogames and mastering a few recipes in the kitchen.</p>
         </div>
         <p class="technologies-used">Technologies I use:</p>
+        <div class="technology-title"><p class="technology-text"></p></div>
         <div class="technologies">
-            <img class="technology-logo" id="Html" src="images/technologies/html.svg" alt="Html Logo">
-            <img class="technology-logo" id="Css" src="images/technologies/css.svg" alt="Css Logo">
+            <img class="technology-logo" id="HTML" src="images/technologies/html.svg" alt="Html Logo">
+            <img class="technology-logo" id="CSS" src="images/technologies/css.svg" alt="Css Logo">
             <img class="technology-logo" id="Javascript" src="images/technologies/javascript.svg" alt="Javascript Logo">
             <img class="technology-logo" id="JQuery" src="images/technologies/jquery.svg" alt="JQuery Logo">
             <img class="technology-logo" id="Bootstrap" src="images/technologies/bootstrap.svg" alt="Bootstrap Logo">
-            <img class="technology-logo" id="Photoshop" src="images/technologies/photoshop.svg" alt="Photoshop Logo">
-            <img class="technology-logo" id="Illustrator" src="images/technologies/illustrator.svg" alt="Illustrator Logo">
-            <img class="technology-logo" id="Adobe" src="images/technologies/xd.svg" alt="Adobe XD Logo">
+            <img class="technology-logo" id="Adobe Photoshop" src="images/technologies/photoshop.svg" alt="Photoshop Logo">
+            <img class="technology-logo" id="Adobe Illustrator" src="images/technologies/illustrator.svg" alt="Illustrator Logo">
+            <img class="technology-logo" id="Adobe XD" src="images/technologies/xd.svg" alt="Adobe XD Logo">
             <img class="technology-logo" id="SASS" src="images/technologies/sass.svg" alt="SASS Logo">
             <img class="technology-logo" id="GitHub" src="images/technologies/github-black.svg" alt="GitHub Logo">
-            <img class="technology-logo" id="Visual-Studio-Code" src="images/technologies/vs-code.svg" alt="Visual Studio Code Logo">
+            <img class="technology-logo" id="Visual Studio Code" src="images/technologies/vs-code.svg" alt="Visual Studio Code Logo">
         </div>
     </div>
 
@@ -210,13 +212,14 @@
             </form>
         <div class="social-container">
             <a href="https://github.com/quasarzet?tab=repositories" target='_blank'><img class="social-logo" src="images/technologies/github.svg" alt="GitHub Logo"></a>
-            <a href="linkedin.com" target='_blank'><img class="social-logo" src="images/technologies/linkedin.svg" alt="LinkedIn Logo"></a>
-            <a href="https://codepen.io/your-work" target='_blank'><img class="social-logo" src="images/technologies/codepen.svg" alt="Codepen Logo"></a>
+            <a href="https://www.linkedin.com/in/julian-montoya-franco-b31651208/" target='_blank'><img class="social-logo" src="images/technologies/linkedin.svg" alt="LinkedIn Logo"></a>
+            <a href="https://codepen.io/quasarzet" target='_blank'><img class="social-logo" src="images/technologies/codepen.svg" alt="Codepen Logo"></a>
         </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollTrigger.min.js"></script>
     <script src="scripts.js"></script>
 </body>
 </html>
