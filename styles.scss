@@ -311,6 +311,19 @@ a{
     padding: 3vw;
     border-radius: 10px;
     box-shadow: 2px 2px 2px black;
+    z-index: 5;
+}
+.technology-title{
+    background-color:rgb(32, 36, 51);
+    padding: 0 1vw;
+    padding-bottom: 2vh;
+    border-radius: 10px 10px 0 0;
+    z-index: 1;
+    min-width: 40vw;
+    height: 4vh;
+}
+.technology-text{
+    text-align: center;
 }
 .technology-logo{
     width: 9vw;

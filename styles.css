@@ -490,6 +490,21 @@ a {
   border-radius: 10px;
   -webkit-box-shadow: 2px 2px 2px black;
           box-shadow: 2px 2px 2px black;
+  z-index: 5;
+}
+
+.technology-title {
+  background-color: #202433;
+  padding: 0 1vw;
+  padding-bottom: 2vh;
+  border-radius: 10px 10px 0 0;
+  z-index: 1;
+  min-width: 40vw;
+  height: 4vh;
+}
+
+.technology-text {
+  text-align: center;
 }
 
 .technology-logo {

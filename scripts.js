@@ -517,8 +517,6 @@ function defineScrollAnimations(){
 let originalSize = window.innerWidth;
 window.addEventListener('resize', ()=>{
         let newSize = window.innerWidth;
-        console.log("Original size is " + originalSize);
-        console.log("New size is " + newSize);
         if(originalSize > 1023 && newSize<1024){
             scrollingAnimations;
         };
