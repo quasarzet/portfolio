@@ -175,7 +175,6 @@ function scrollingControl(){
     const fourthSection = document.querySelector('#contact');
     const progress = Math.ceil(((window.scrollY)/(document.body.scrollHeight - window.innerHeight)*100));
     let currentSection = '';
-    console.log(progress);
 
     switch(true){
       case (progress<18):
@@ -199,7 +198,6 @@ function scrollingControl(){
         nextSectionButton.onclick = ()=>{firstSection.scrollIntoView()};
         break;
       default:
-        console.log("Where was I?");
         break;
     }
 
@@ -355,7 +353,7 @@ $(document).ready(()=>{
     }
     else{
         getLanguageEnglish();
-    }
+    };
 });
 
 // EVENTS LISTENERS FOR THE LANGUAGE BUTTONS
@@ -371,8 +369,7 @@ function revealLinks(element){
 
     gsap.to(firstchild, {duration: 0.3, opacity: 0.3});
     gsap.to(secondchild, {duration: 0.3, opacity: 1});
-    console.log(element.children[1]);
-}
+};
 // HIDES THE PROJECT LINKS
 function hideLinks(element){
     const firstchild = element.children[0];
@@ -380,22 +377,21 @@ function hideLinks(element){
 
     gsap.to(firstchild, {duration: 0.3, opacity: 1});
     gsap.to(secondchild, {duration: 0.5, opacity: 0});
-    console.log(element.children[1]);
-}
+};
 // ADDS EVEN LISTENERS TO THE PROJECT IMAGES AND CALL THE FUNCTION TO SHOW THE LINKS
 const projectImages = document.querySelectorAll('.project-images-container');
 projectImages.forEach(element=>{
     element.onmouseenter =()=>{revealLinks(element);
-}})
+}});
 // ADDS EVEN LISTENERS TO THE PROJECT IMAGES AND CALL THE FUNCTION TO HIDE THE LINKS
 projectImages.forEach(element=>{
     element.onmouseleave =()=>{hideLinks(element);
-}})
+}});
 
 
 // STARTING ANIMATIONS FOR DESKTOP
 function onLoadAnimations(){
-    const canvas = $('canvas');
+    const burgerMenu = $('.burger-menu');
     const welcomeMessage = $('.welcome-message');
     const navigationItem2 = $('.nav-2');
     const navigationItem3 = $('.nav-3');
@@ -409,49 +405,132 @@ function onLoadAnimations(){
     const outerRing = $('.outer-ring');
     const scrollLines = $('.scrolling-lines-container');
     const contactButton = $('.contact-button');
+    const scrollArrow = $('.arrow-scroll');
+    const screenWidth = window.innerWidth;
+
+    if (screenWidth<1024){
+    // FIRST SECTION ANIMATIONS FOR SMALL SCREENS
+        const startingAnimations = gsap.timeline();
+        startingAnimations
+        .from(welcomeMessage, {opacity: 0, duration: 2}, 0)
+        .to(welcomeMessage, {opacity: 0, duration: 1}, 3)
+        .to(welcomeMessage, {display: 'none'}, 3.5)
+        .from(profilePhoto,{opacity: 0, duration: .5}, 4)
+        .from(innerRing,{opacity: 0, duration: 0.5}, 4.5)
+        .from(middleRing,{opacity: 0, duration: 0.5}, 5)
+        .from(outerRing,{opacity: 0, duration: 0.5}, 5.5)
+        .from(burgerMenu, {x:'-40vw', duration: 0.5}, 5.7)
+        .from(languages, {x:'40vw', duration: 0.5}, 5.7)
+        .from([name,title], {y:'10', opacity: 0, duration: 0.5}, 5.7)
+        .from([contactButton], {opacity: 0, duration: 1}, 5.7); 
+    }else{
+         // FIRST SECTION ANIMATIONS FOR DESKTOP
+        const startingAnimations = gsap.timeline();
+        startingAnimations
+        .from(welcomeMessage, {opacity: 0, duration: 2}, 0)
+        .to(welcomeMessage, {opacity: 0, duration: 1}, 3)
+        .to(welcomeMessage, {display: 'none'}, 3.5)
+        .from(profilePhoto,{opacity: 0, duration: .5}, 4)
+        .from(innerRing,{opacity: 0, duration: 0.5}, 4.5)
+        .from(middleRing,{opacity: 0, duration: 0.5}, 5)
+        .from(outerRing,{opacity: 0, duration: 0.5}, 5.5)
+        .from([name,title, navigationItem2, navigationItem3, navigationItem4], {x:'-80vw', duration: 0.5}, 5.7)
+        .from([scrollLines,languages], {x:'40vw', duration: 0.5}, 5.7)
+        .from([contactButton, scrollArrow], {display: 'none', opacity: 0, duration: 1}, 5.7);    
+    }
+}
+onLoadAnimations();
+
+
+
+function scrollingAnimations(){
+    const screenWidth = window.innerWidth;
     const firstProject = $('.project-1');
     const secondProject = $('.project-2');
     const thirdProject = $('.project-3');
     const technologyTitle = $('.technology-title');
     const technologies = $('.technologies');
     
-    // FIRST SECTION ANIMATIONS
-    const startingAnimations = gsap.timeline();
-    startingAnimations
-    .from(canvas, {opacity: 0, duration: 5}, 0)
-    .from(welcomeMessage, {opacity: 0, duration: 2}, 0)
-    .from(navigationItem2, {opacity: 0, scale: (0.2), duration: 0.5}, 7)
-    .from(navigationItem3, {opacity: 0, scale: (0.2), duration: 0.5}, 7.2)
-    .from(navigationItem4, {opacity: 0, scale: (0.2), duration: 0.5}, 7.4)
-    .to(welcomeMessage, {opacity: 0, duration: 1}, 3)
-    .to(welcomeMessage, {display: 'none'}, 3.5)
-    .from([name,title], {x:'-80vh', duration: 0.5}, 7)
-    .from(profilePhoto,{opacity: 0, duration: 1}, 4)
-    .from(innerRing,{opacity: 0, duration: 1}, 5)
-    .from(middleRing,{opacity: 0, duration: 1}, 6)
-    .from(outerRing,{opacity: 0, duration: 1}, 7)
-    .from([scrollLines,languages], {x:'40vh', duration: 0.5}, 7.2)
-    .from(contactButton,{opacity: 0, duration: 1}, 7.2)
-
-    // PROJECT SECTION ANIMATIONS
-    const projectsTimeline = gsap.timeline({
+    // PROJECTS ANIMATIONS      
+    if(screenWidth<1024){
+        gsap.from(firstProject,{
+            scrollTrigger: {
+            trigger: firstProject,
+            start:"top center",
+            toggleActions:"play none none none",
+            },
+            opacity: 0,
+            x: -screenWidth,
+            duration: 1,
+            ease: 'expo',
+        });
+        gsap.from(secondProject,{
+            scrollTrigger: {
+            trigger: secondProject,
+            start:"top center",
+            toggleActions:"play none none none",
+            },
+            opacity: 0,
+            x: screenWidth,
+            duration: 1,
+            ease: 'expo'
+        });
+        gsap.from(thirdProject,{
+            scrollTrigger: {
+            trigger: thirdProject,
+            start:"top center",
+            toggleActions:"play none none none",
+            },
+            opacity: 0,
+            x: -screenWidth,
+            duration: 1,
+            ease: 'expo'
+        });
+        gsap.from([technologyTitle, technologies], {opacity: 0, duration: 2});
+    }
+    else{
+        // PROJECT SECTION ANIMATIONS DESKTOP
+        const projectsTimeline = gsap.timeline({
         scrollTrigger: {
             trigger:firstProject,
             start:"top center",
             toggleActions:"play none none none"
-        }
-    });
-    projectsTimeline
-    .from(firstProject,{ease: 'expo', transform: 'rotateY(90deg)', opacity: 0, y: 100, duration: 1})
-    .from(secondProject,{ease: 'expo', transform: 'rotateY(90deg)', opacity: 0, y: 100, duration: 1}, 0.3)
-    .from(thirdProject,{ease: 'expo', transform: 'rotateY(90deg)', opacity: 0, y: 100, duration: 1}, 0.6)
-    .from([technologyTitle, technologies], {opacity: 0, duration: 2});
+            }
+        });
+        projectsTimeline
+        .from(firstProject,{ease: 'expo', transform: 'rotateY(90deg)', opacity: 0, y: 100, duration: 1})
+        .from(secondProject,{ease: 'expo', transform: 'rotateY(90deg)', opacity: 0, y: 100, duration: 1}, 0.3)
+        .from(thirdProject,{ease: 'expo', transform: 'rotateY(90deg)', opacity: 0, y: 100, duration: 1}, 0.6)
+        .from([technologyTitle, technologies], {opacity: 0, duration: 2});
+    }
+
 }
+function defineScrollAnimations(){
+    const tabScroll = $('.tab-scroll');
+    ScrollTrigger.create({
+        trigger: tabScroll,
+        start: "-200vh center",
+        onEnter: scrollingAnimations
+    });
+};
 
-onLoadAnimations();
+let originalSize = window.innerWidth;
+window.addEventListener('resize', ()=>{
+        let newSize = window.innerWidth;
+        console.log("Original size is " + originalSize);
+        console.log("New size is " + newSize);
+        if(originalSize > 1023 && newSize<1024){
+            scrollingAnimations;
+        };
+        if(originalSize < 1024 && newSize>1024){
+            scrollingAnimations;
+        };
+    });
+
+defineScrollAnimations();
 
 
-// TECHNOLOGIES DESCRIPTION ANIMATION
+// TECHNOLOGIES DESCRIPTION ANIMATIONS
 function technologyDescription(){
     const technologies = document.querySelectorAll('.technology-logo');
     const technologyTitle = document.querySelector('.technology-title');
