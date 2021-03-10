@@ -357,10 +357,14 @@ $(document).ready(()=>{
 });
 
 // EVENTS LISTENERS FOR THE LANGUAGE BUTTONS
-$('.spanish').click(getLanguageSpanish);
+// $('.spanish').click(getLanguageSpanish);
 $('.english').click(getLanguageEnglish);
 
-
+$('.spanish').click(()=>{
+    $('.spanish').disabled = true;
+    getLanguageSpanish();
+    
+});
 
 // REVEAL THE PROJECT LINKS
 function revealLinks(element){

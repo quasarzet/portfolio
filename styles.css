@@ -197,12 +197,8 @@ canvas {
   display: none;
 }
 
-.english {
-  width: 80%;
-}
-
-.spanish {
-  width: 80%;
+.language-options img {
+  width: 90%;
 }
 
 .rings-container {
@@ -269,10 +265,8 @@ canvas {
 }
 
 .profile-photo {
-  width: 60%;
+  width: 38%;
   position: absolute;
-  -webkit-clip-path: circle(25%);
-          clip-path: circle(25%);
 }
 
 .name-title-container {

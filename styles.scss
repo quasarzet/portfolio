@@ -126,11 +126,8 @@ canvas{
 .language-options span{
     display: none;
 }
-.english{
-    width: 80%;
-}
-.spanish{
-    width: 80%;
+.language-options img{
+    width: 90%;
 }
 .rings-container{
     display: flex;
@@ -166,9 +163,8 @@ canvas{
     }
 }
 .profile-photo{
-    width: 60%;
+    width: 38%;
     position: absolute;
-    clip-path: circle(25%);
 }
 .name-title-container{
     font-size: 1.7em;
@@ -504,6 +500,7 @@ input[name='name']::placeholder, input[name='mail']::placeholder{
     }
     .profile-photo{
         width: 21%;
+        // width: 100%;
     }
     .navigation-bar{
         grid-column: 1/5;
