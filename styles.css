@@ -7,6 +7,7 @@ html {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   scroll-behavior: smooth;
+  height: 100%;
 }
 
 body {
@@ -18,6 +19,7 @@ body {
   width: 100vw;
   background-color: #25282d;
   font-family: Sarala;
+  height: 100%;
 }
 
 .navigation-items-desktop, .scrolling-lines, .popover {
@@ -188,7 +190,7 @@ canvas {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   right: 5vw;
-  width: 30vw;
+  width: 25vw;
   height: 8vh;
   z-index: 8;
 }
@@ -198,7 +200,8 @@ canvas {
 }
 
 .language-options img {
-  width: 90%;
+  width: 80%;
+  padding-left: 5vw;
 }
 
 .rings-container {
@@ -356,6 +359,7 @@ a {
   font-size: 3em;
   text-align: center;
   margin-bottom: 5vh;
+  z-index: 9;
 }
 
 .project {
@@ -582,7 +586,7 @@ a {
 }
 
 .contact-form {
-  height: 40vh;
+  min-height: 40vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -593,15 +597,17 @@ a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  overflow: hidden;
 }
 
 input, textarea {
   width: 70vw;
   border-radius: 5px;
   color: black;
+  overflow: hidden;
 }
 
 input {
@@ -626,11 +632,11 @@ input[name='name']::placeholder, input[name='mail']::placeholder {
 }
 
 .submit-button {
+  padding: 1vh 4vw;
   margin-top: 2vh;
   background-color: lightgray;
   color: #8C0303;
   border-radius: 10px;
-  padding: 0.5vh 6vw;
   -webkit-box-shadow: 1px 1px 2px 1px  #888888;
           box-shadow: 1px 1px 2px 1px  #888888;
 }
@@ -657,6 +663,9 @@ input[name='name']::placeholder, input[name='mail']::placeholder {
 }
 
 @media all and (min-width: 768px) {
+  .language-options img {
+    width: 70%;
+  }
   .rings-container {
     width: 55vw;
     height: 55vw;
@@ -671,10 +680,13 @@ input[name='name']::placeholder, input[name='mail']::placeholder {
     width: 32%;
   }
   .profile-photo {
-    width: 48%;
+    width: 30%;
   }
   .name, .title {
     font-size: 150%;
+  }
+  .contact-button {
+    margin-bottom: 5vh;
   }
   .project-image {
     height: 35vh;
@@ -682,12 +694,18 @@ input[name='name']::placeholder, input[name='mail']::placeholder {
   .project:last-child {
     margin: 0;
   }
+  .contact-second {
+    width: 90vw;
+  }
   .email {
     font-size: 150%;
     padding-top: 1vh;
   }
   .submit-button {
     margin-top: 0;
+  }
+  .tab-container {
+    margin-top: -8vh;
   }
 }
 
@@ -701,6 +719,7 @@ input[name='name']::placeholder, input[name='mail']::placeholder {
         grid-template-rows: 20vh 55vh 20vh;
     min-height: 95vh;
     padding: 0;
+    overflow: hidden;
   }
   .burger-menu, .overlay, #home-item {
     display: none;
@@ -744,7 +763,7 @@ input[name='name']::placeholder, input[name='mail']::placeholder {
     width: 14%;
   }
   .profile-photo {
-    width: 21%;
+    width: 12%;
   }
   .navigation-bar {
     -ms-grid-column: 1;
@@ -813,11 +832,8 @@ input[name='name']::placeholder, input[name='mail']::placeholder {
     right: 3vw;
     margin: 0;
   }
-  .spanish {
-    width: 70%;
-    margin-left: 0;
-  }
-  .english {
+  .language-options img {
+    padding: 0;
     width: 70%;
   }
   .spanish:hover, .english:hover {
@@ -902,8 +918,10 @@ input[name='name']::placeholder, input[name='mail']::placeholder {
   .contact-button {
     width: 8vw;
     height: 5vh;
+    min-height: 40px;
     padding: 0;
     font-size: 120%;
+    z-index: 1;
   }
   .contact-button:hover {
     -webkit-transition-duration: 0.3s;
@@ -1131,11 +1149,12 @@ input[name='name']::placeholder, input[name='mail']::placeholder {
   .contact-form {
     margin-top: 2vh;
     width: 30vw;
-    min-height: 50vh;
+    height: 50vh;
+    min-height: 400px;
   }
   .name-placeholder, .email-placeholder {
     width: 20vw;
-    height: 5vh;
+    min-height: 5vh;
     font-size: 150%;
   }
   .message-placeholder {

@@ -277,7 +277,7 @@ function animationTranslate(element){
 
 // CREATES AN ARRAY WITH ALL THE TEXT ELEMENTS AND ASSINGS THE MATCHING VALUE FROM
 // JSON LANGUAGE FILES
-function translate(language, iteration){
+function translate(language){
 let translationArray=[
     $('.contact-button').text(language.contact),
     $('.title').text(language.title),
@@ -314,21 +314,35 @@ let translationArray=[
     let animatedArray = translationArray.slice(10, translationArray.length);
     animatedArray.forEach(element=>{
        animationTranslate(element);
-        })
+        });
 };
 
+
+// function renewButton(){
+//     spanish.addEventListener('click', getLanguageSpanish);
+// }
+
+
 // REQUEST SPANISH LANGUAGE
-let iteration = 0;
 function getLanguageSpanish(){
     $.ajax({ 
         url: 'https://quasarzet.github.io/portfolio/language/es.json', 
         dataType: 'json', async: true, 
         success: (spanishData)=> {
             const spanishLanguage = spanishData;
-            translate(spanishLanguage, iteration);
+            translate(spanishLanguage);
         }
     });
-    iteration++;
+    let spanish = document.querySelector('.spanish');
+    spanish.removeEventListener('click', getLanguageSpanish);
+    setTimeout(()=>{
+        spanish.addEventListener('click', getLanguageSpanish);
+    }, 1000);
+    let english = document.querySelector('.english');
+    english.removeEventListener('click', getLanguageEnglish);
+    setTimeout(()=>{
+        english.addEventListener('click', getLanguageEnglish);
+    }, 1000);
     localStorage.setItem('language', 'es');
 };
 
@@ -339,10 +353,19 @@ function getLanguageEnglish(){
         dataType: 'json', async: true, 
         success: (englishData)=> {
             let englishLanguage = englishData;
-            translate(englishLanguage, iteration);
+            translate(englishLanguage);
         }
     });
-    iteration++;
+    let english = document.querySelector('.english');
+    english.removeEventListener('click', getLanguageEnglish);
+    setTimeout(()=>{
+        english.addEventListener('click', getLanguageEnglish);
+    }, 1000);
+    let spanish = document.querySelector('.spanish');
+    spanish.removeEventListener('click', getLanguageSpanish);
+    setTimeout(()=>{
+        spanish.addEventListener('click', getLanguageSpanish);
+    }, 1000);
     localStorage.setItem('language', 'en');
 };
 
@@ -356,15 +379,6 @@ $(document).ready(()=>{
     };
 });
 
-// EVENTS LISTENERS FOR THE LANGUAGE BUTTONS
-// $('.spanish').click(getLanguageSpanish);
-$('.english').click(getLanguageEnglish);
-
-$('.spanish').click(()=>{
-    $('.spanish').disabled = true;
-    getLanguageSpanish();
-    
-});
 
 // REVEAL THE PROJECT LINKS
 function revealLinks(element){
@@ -444,7 +458,6 @@ function onLoadAnimations(){
     }
 }
 onLoadAnimations();
-
 
 
 function scrollingAnimations(){

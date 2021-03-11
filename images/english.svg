@@ -1,54 +1,47 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 154.53 103.45">
-  <defs>
-    <style>
-      .a {
-        fill: none;
-      }
-
-      .b {
-        clip-path: url(#a);
-      }
-
-      .c {
-        fill: #00237c;
-      }
-
-      .d {
-        fill: #fff;
-      }
-
-      .e {
-        fill: #cf142b;
-      }
-    </style>
-    <clipPath id="a" transform="translate(26.53 2.18)">
-      <circle class="a" cx="50.36" cy="50.36" r="50.36" transform="translate(-17.21 27.84) rotate(-26.56)"/>
-    </clipPath>
-  </defs>
-  <g class="b">
-    <g>
-      <g>
-        <rect class="c" width="64.15" height="34.31"/>
-        <polygon class="d" points="17.61 0 0 0 0 10.79 85.9 67.51 106.81 58.9 17.61 0"/>
-        <polygon class="e" points="0 0.9 0 8.32 87.04 65.79 90.45 60.62 0 0.9"/>
-      </g>
-      <g>
-        <rect class="c" x="90.38" width="64.15" height="34.31"/>
-        <polygon class="d" points="136.93 0 154.53 0 154.53 10.79 68.63 67.51 47.72 58.9 136.93 0"/>
-        <polygon class="e" points="154.53 0.9 154.53 8.32 67.49 65.79 64.08 60.62 154.53 0.9"/>
-      </g>
-      <g>
-        <rect class="c" x="90.38" y="69.14" width="64.15" height="34.31"/>
-        <polygon class="d" points="136.93 103.45 154.53 103.45 154.53 92.66 68.63 35.94 47.72 44.55 136.93 103.45"/>
-        <polygon class="e" points="154.53 102.55 154.53 95.14 67.49 37.66 64.08 42.83 154.53 102.55"/>
-      </g>
-      <g>
-        <rect class="c" y="69.14" width="64.15" height="34.31"/>
-        <polygon class="d" points="17.61 103.45 0 103.45 0 92.66 85.9 35.94 106.81 44.55 17.61 103.45"/>
-        <polygon class="e" points="0 102.55 0 95.14 87.04 37.66 90.45 42.83 0 102.55"/>
-      </g>
-      <polygon class="d" points="154.53 34.31 90.51 34.31 90.51 0 63.76 0 63.76 34.31 0 34.31 0 68.37 63.76 68.37 63.76 103.45 90.51 103.45 90.51 68.37 154.53 68.37 154.53 34.31"/>
-      <polygon class="e" points="154.53 41.28 84.83 41.28 84.83 0 69.44 0 69.44 41.28 0 41.28 0 61.4 69.44 61.4 69.44 103.45 84.83 103.45 84.83 61.4 154.53 61.4 154.53 41.28"/>
-    </g>
-  </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 359.6 359.7" style="enable-background:new 0 0 359.6 359.7;" xml:space="preserve">
+<style type="text/css">
+	.st0{clip-path:url(#SVGID_2_);}
+	.st1{fill:#273375;}
+	.st2{fill:#FFFFFF;}
+	.st3{fill:#D0202D;}
+</style>
+<g>
+	<defs>
+		<circle id="SVGID_1_" cx="179.7" cy="179.5" r="179.9"/>
+	</defs>
+	<clipPath id="SVGID_2_">
+		<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+	</clipPath>
+	<g class="st0">
+		<g>
+			<g>
+				<rect x="-95" y="-8.2" class="st1" width="229.2" height="122.6"/>
+				<polygon class="st2" points="-32,-8.2 -95,-8.2 -95,30.3 211.9,233 286.6,202.2 				"/>
+				<polygon class="st3" points="-95,-5 -95,21.5 216,226.8 228.2,208.3 				"/>
+			</g>
+			<g>
+				<rect x="227.9" y="-8.2" class="st1" width="229.2" height="122.6"/>
+				<polygon class="st2" points="394.2,-8.2 457.1,-8.2 457.1,30.3 150.2,233 75.5,202.2 				"/>
+				<polygon class="st3" points="457.1,-5 457.1,21.5 146.1,226.8 134,208.3 				"/>
+			</g>
+			<g>
+				<rect x="227.9" y="238.8" class="st1" width="229.2" height="122.6"/>
+				<polygon class="st2" points="394.2,361.3 457.1,361.3 457.1,322.8 150.2,120.2 75.5,150.9 				"/>
+				<polygon class="st3" points="457.1,358.1 457.1,331.7 146.1,126.3 134,144.8 				"/>
+			</g>
+			<g>
+				<rect x="-95" y="238.8" class="st1" width="229.2" height="122.6"/>
+				<polygon class="st2" points="-32,361.3 -95,361.3 -95,322.8 211.9,120.2 286.6,150.9 				"/>
+				<polygon class="st3" points="-95,358.1 -95,331.7 216,126.3 228.2,144.8 				"/>
+			</g>
+			<polygon class="st2" points="457.1,114.4 228.4,114.4 228.4,-8.2 132.8,-8.2 132.8,114.4 -95,114.4 -95,236 132.8,236 
+				132.8,361.3 228.4,361.3 228.4,236 457.1,236 			"/>
+			<polygon class="st3" points="457.1,139.3 208.1,139.3 208.1,-8.2 153.1,-8.2 153.1,139.3 -95,139.3 -95,211.1 153.1,211.1 
+				153.1,361.3 208.1,361.3 208.1,211.1 457.1,211.1 			"/>
+		</g>
+	</g>
+</g>
 </svg>
