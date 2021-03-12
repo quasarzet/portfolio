@@ -22,7 +22,7 @@ body {
   height: 100%;
 }
 
-.navigation-items-desktop, .scrolling-lines, .popover {
+.navigation-items-desktop, .scrolling-lines {
   display: none;
 }
 
@@ -45,7 +45,6 @@ body {
   padding: 0 7vw;
   width: 100vw;
   min-height: 95vh;
-  overflow: hidden;
   font-family: Sarala;
   color: white;
 }
@@ -322,17 +321,6 @@ canvas {
   visibility: hidden;
   width: 0;
   height: 0;
-}
-
-a:link, a:visited {
-  text-decoration: none;
-  color: inherit;
-}
-
-a {
-  margin: 0;
-  padding: 0;
-  cursor: auto;
 }
 
 .section {
@@ -719,7 +707,6 @@ input[name='name']::placeholder, input[name='mail']::placeholder {
         grid-template-rows: 20vh 55vh 20vh;
     min-height: 95vh;
     padding: 0;
-    overflow: hidden;
   }
   .burger-menu, .overlay, #home-item {
     display: none;
@@ -857,25 +844,10 @@ input[name='name']::placeholder, input[name='mail']::placeholder {
     text-shadow: 2px 2px 5px white;
   }
   .scrolling-lines-container {
-    -ms-grid-column: 4;
-    -ms-grid-column-span: 1;
-    grid-column: 4/5;
-    -ms-grid-row: 2;
-    -ms-grid-row-span: 1;
-    grid-row: 2/3;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    top: 30vh;
+    right: 5vw;
+    position: fixed;
+    z-index: 9;
   }
   .scroll-line-text {
     font-size: 1.2em;
@@ -895,8 +867,7 @@ input[name='name']::placeholder, input[name='mail']::placeholder {
             align-items: center;
     -ms-flex-pack: distribute;
         justify-content: space-around;
-    position: fixed;
-    z-index: 9;
+    padding: 3vh;
   }
   .scroll-line {
     width: 100%;

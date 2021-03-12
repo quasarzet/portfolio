@@ -203,9 +203,9 @@ function scrollingControl(){
 
     // SCROLLING BAR BACKGROUND ANIMATION
     if(progress>17){
-        gsap.to(scrollingLines,{backgroundColor: 'rgba(0,0,0,0.8)', duration: 0.5, padding: "4vh", borderRadius: '10px'});
+        gsap.to(scrollingLines,{backgroundColor: 'rgba(0,0,0,0.8)', duration: 0.5, borderRadius: '10px'});
     }else{
-        gsap.to(scrollingLines,{backgroundColor: 'transparent', duration: 0.5, padding: 0})
+        gsap.to(scrollingLines,{backgroundColor: 'transparent', duration: 0.5})
     }
     
     // ANIMATIONS FOR THE NEXT SECTION ARROW
@@ -316,11 +316,6 @@ let translationArray=[
        animationTranslate(element);
         });
 };
-
-
-// function renewButton(){
-//     spanish.addEventListener('click', getLanguageSpanish);
-// }
 
 
 // REQUEST SPANISH LANGUAGE

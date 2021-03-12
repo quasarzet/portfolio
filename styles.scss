@@ -17,7 +17,7 @@ body{
     font-family: Sarala;
     height: 100%;
 }
-.navigation-items-desktop, .scrolling-lines, .popover{
+.navigation-items-desktop, .scrolling-lines{
     display: none;
 }
 
@@ -32,7 +32,6 @@ body{
     padding: 0 7vw;
     width: 100vw;
     min-height: 95vh;
-    overflow: hidden;
     font-family: Sarala;
     color: white;
 }
@@ -206,15 +205,15 @@ canvas{
     width: 0;
     height: 0;
 }
-a:link, a:visited{
-    text-decoration: none;
-    color: inherit;
-}
-a{
-    margin: 0;
-    padding: 0;
-    cursor:auto;
-}
+// a:link, a:visited{
+//     text-decoration: none;
+//     color: inherit;
+// }
+// a{
+//     margin: 0;
+//     padding: 0;
+//     cursor:auto;
+// }
 
 
 // SECOND SECTION - PROJECTS ----------------------------------------------------------------------------
@@ -483,7 +482,6 @@ input[name='name']::placeholder, input[name='mail']::placeholder{
         grid-template-rows: 20vh 55vh 20vh;
         min-height: 95vh;
         padding: 0;
-        overflow: hidden;
     }
     .burger-menu, .overlay, #home-item{
         display: none;
@@ -577,12 +575,10 @@ input[name='name']::placeholder, input[name='mail']::placeholder{
         text-shadow: 2px 2px 5px white;
     }
     .scrolling-lines-container{
-        grid-column: 4/5;
-        grid-row: 2/3;
-        display: flex;
-        flex-direction: column;
-        align-items:center;
-        justify-content: center;
+        top: 30vh;
+        right: 5vw;
+        position: fixed;
+        z-index: 9;
     }
     .scroll-line-text{
         font-size: 1.2em;
@@ -594,8 +590,7 @@ input[name='name']::placeholder, input[name='mail']::placeholder{
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
-        position: fixed;
-        z-index: 9;
+        padding: 3vh;
     }
     .scroll-line{
         width: 100%;
@@ -825,7 +820,4 @@ input[name='name']::placeholder, input[name='mail']::placeholder{
         transform: scale(1.2);
         transition-duration: 0.3s;
     }
-
-
-
 }
