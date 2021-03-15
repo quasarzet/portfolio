@@ -20,7 +20,10 @@ body{
 .navigation-items-desktop, .scrolling-lines{
     display: none;
 }
-
+a{
+    text-decoration: none;
+    color: inherit;
+}
 
 // FIRST SECTION - LANDING -------------------------------------------------------------------
 .first-section{
@@ -205,15 +208,6 @@ canvas{
     width: 0;
     height: 0;
 }
-// a:link, a:visited{
-//     text-decoration: none;
-//     color: inherit;
-// }
-// a{
-//     margin: 0;
-//     padding: 0;
-//     cursor:auto;
-// }
 
 
 // SECOND SECTION - PROJECTS ----------------------------------------------------------------------------
