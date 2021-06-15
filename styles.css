@@ -283,7 +283,7 @@ canvas {
 }
 
 .contact-button {
-  padding: 1vh 4vw;
+  padding: 1em 4em;
   border-radius: 10px;
   background-color: lightgray;
   color: #8C0303;
@@ -605,7 +605,7 @@ input, textarea {
 
 input {
   text-align: center;
-  height: 4vh;
+  height: 2em;
 }
 
 input[name='name']::-webkit-input-placeholder, input[name='mail']::-webkit-input-placeholder {
@@ -620,12 +620,13 @@ input[name='name']::-ms-input-placeholder, input[name='mail']::-ms-input-placeho
   text-align: center;
 }
 
-input[name='name']::placeholder, input[name='mail']::placeholder {
+input[name='name']::placeholder, input[name='mail']::placeholder, textarea[name='message']::placeholder {
   text-align: center;
+  font-family: Sarala;
 }
 
 .submit-button {
-  padding: 1vh 4vw;
+  padding: 1em 4em;
   margin-top: 2vh;
   background-color: lightgray;
   color: #8C0303;
@@ -679,7 +680,7 @@ input[name='name']::placeholder, input[name='mail']::placeholder {
     font-size: 150%;
   }
   .contact-button {
-    margin-bottom: 5vh;
+    margin-bottom: 5em;
   }
   .project-image {
     height: 35vh;
@@ -695,7 +696,7 @@ input[name='name']::placeholder, input[name='mail']::placeholder {
     padding-top: 1vh;
   }
   .submit-button {
-    margin-top: 0;
+    margin-top: 1em;
   }
   .tab-container {
     margin-top: -8vh;
@@ -892,8 +893,8 @@ input[name='name']::placeholder, input[name='mail']::placeholder {
     margin: 0 auto;
   }
   .contact-button {
-    width: 8vw;
-    height: 5vh;
+    width: 8em;
+    height: 2em;
     min-height: 40px;
     padding: 0;
     font-size: 120%;
@@ -1121,6 +1122,7 @@ input[name='name']::placeholder, input[name='mail']::placeholder {
     resize: none;
     margin: 0 auto;
     display: block;
+    text-align: center;
   }
   .contact-form {
     margin-top: 2vh;
@@ -1135,7 +1137,9 @@ input[name='name']::placeholder, input[name='mail']::placeholder {
   }
   .message-placeholder {
     width: 20vw;
-    font-size: 150%;
+    font-size: 120%;
+    font-family: Sarala;
+    text-align: center;
   }
   .message-placeholder::-webkit-input-placeholder {
     font-size: 150%;
@@ -1150,8 +1154,8 @@ input[name='name']::placeholder, input[name='mail']::placeholder {
     font-size: 150%;
   }
   .submit-button {
-    width: 8vw;
-    min-height: 5vh;
+    width: 8em;
+    min-height: 2em;
     padding: 0;
     font-size: 150%;
   }
