@@ -283,7 +283,7 @@ canvas {
 }
 
 .contact-button {
-  padding: 1em 4em;
+  padding: 1vh 4vw;
   border-radius: 10px;
   background-color: lightgray;
   color: #8C0303;
@@ -394,7 +394,7 @@ canvas {
 }
 
 .project-links {
-  opacity: 0;
+  opacity: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -605,7 +605,7 @@ input, textarea {
 
 input {
   text-align: center;
-  height: 2em;
+  height: 4vh;
 }
 
 input[name='name']::-webkit-input-placeholder, input[name='mail']::-webkit-input-placeholder {
@@ -620,13 +620,12 @@ input[name='name']::-ms-input-placeholder, input[name='mail']::-ms-input-placeho
   text-align: center;
 }
 
-input[name='name']::placeholder, input[name='mail']::placeholder, textarea[name='message']::placeholder {
+input[name='name']::placeholder, input[name='mail']::placeholder {
   text-align: center;
-  font-family: Sarala;
 }
 
 .submit-button {
-  padding: 1em 4em;
+  padding: 1vh 4vw;
   margin-top: 2vh;
   background-color: lightgray;
   color: #8C0303;
@@ -680,7 +679,7 @@ input[name='name']::placeholder, input[name='mail']::placeholder, textarea[name=
     font-size: 150%;
   }
   .contact-button {
-    margin-bottom: 5em;
+    margin-bottom: 5vh;
   }
   .project-image {
     height: 35vh;
@@ -696,7 +695,7 @@ input[name='name']::placeholder, input[name='mail']::placeholder, textarea[name=
     padding-top: 1vh;
   }
   .submit-button {
-    margin-top: 1em;
+    margin-top: 0;
   }
   .tab-container {
     margin-top: -8vh;
@@ -893,8 +892,8 @@ input[name='name']::placeholder, input[name='mail']::placeholder, textarea[name=
     margin: 0 auto;
   }
   .contact-button {
-    width: 8em;
-    height: 2em;
+    width: 8vw;
+    height: 5vh;
     min-height: 40px;
     padding: 0;
     font-size: 120%;
@@ -1122,7 +1121,6 @@ input[name='name']::placeholder, input[name='mail']::placeholder, textarea[name=
     resize: none;
     margin: 0 auto;
     display: block;
-    text-align: center;
   }
   .contact-form {
     margin-top: 2vh;
@@ -1137,9 +1135,7 @@ input[name='name']::placeholder, input[name='mail']::placeholder, textarea[name=
   }
   .message-placeholder {
     width: 20vw;
-    font-size: 120%;
-    font-family: Sarala;
-    text-align: center;
+    font-size: 150%;
   }
   .message-placeholder::-webkit-input-placeholder {
     font-size: 150%;
@@ -1154,8 +1150,8 @@ input[name='name']::placeholder, input[name='mail']::placeholder, textarea[name=
     font-size: 150%;
   }
   .submit-button {
-    width: 8em;
-    min-height: 2em;
+    width: 8vw;
+    min-height: 5vh;
     padding: 0;
     font-size: 150%;
   }
